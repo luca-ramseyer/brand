@@ -1,0 +1,23 @@
+# Luca Ramseyer — Brand
+
+> Visual identity and design system for the Luca Ramseyer / raml.ch personal brand (systems, cybersecurity, software). Quiet, precise, Swiss restraint: paper-and-ink palette, Cormorant Garamond + Montserrat, one muted-red accent used sparingly.
+
+When designing or coding anything for this brand, use the tokens verbatim and follow the rules. Never invent colours or fonts; red is an accent only; keep the wordmark's wide letter-spacing.
+
+## Core
+- [Agent rules](AGENTS.md): authoritative, concise instructions for coding agents.
+- [Design tokens (JSON)](tokens.json): single source of truth — colour, type, spacing, radius.
+- [Tokens (CSS variables)](tokens/tokens.css): drop-in for plain CSS.
+- [Tokens (Tailwind v4 theme)](tokens/theme.css): drop-in for Tailwind.
+
+## Reference
+- [Style guide (Markdown)](style-guide.md): full guide in plain text.
+- [Style guide (HTML)](style-guide.html): human-facing guide; also embeds tokens as JSON (`#brand-tokens`).
+
+## Assets
+- [assets/](assets/): wordmark/mark, favicons, social avatars and banners.
+
+## Licensing
+- Fonts are under the SIL Open Font License 1.1 (free for commercial use). See [fonts/README.md](fonts/README.md) for when a licence file must be shipped.
+- [Cormorant Garamond OFL](fonts/OFL-CormorantGaramond.txt) · [Montserrat OFL](fonts/OFL-Montserrat.txt)
+- Include the matching OFL file only when redistributing the font files (self-hosting webfonts or bundling in an app); not for CDN use or document exports.

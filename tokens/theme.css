@@ -1,0 +1,28 @@
+/* Tailwind v4 theme — generated from tokens.json. Import after `@import "tailwindcss";` */
+@theme {
+  --color-paper: #F4EFE4;
+  --color-surface: #FBF8F1;
+  --color-ink: #211F1C;
+  --color-body: #423D37;
+  --color-muted: #857E72;
+  --color-red: #C0473A;
+  --color-red-deep: #A63B30;
+  --color-line: #DAD2C4;
+  --font-display: 'Cormorant Garamond', 'Cormorant', Georgia, 'Times New Roman', serif;
+  --font-sans: 'Montserrat', 'Helvetica Neue', Arial, sans-serif;
+  --text-display: 56px;
+  --text-h1: 40px;
+  --text-h2: 30px;
+  --text-h3: 21px;
+  --text-body: 16px;
+  --text-small: 13px;
+  --text-eyebrow: 12px;
+  --spacing-1: 8px;
+  --spacing-2: 16px;
+  --spacing-3: 24px;
+  --spacing-4: 32px;
+  --spacing-5: 48px;
+  --spacing-6: 64px;
+  --spacing-7: 96px;
+  --radius-ui: 3px;
+}

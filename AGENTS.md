@@ -1,0 +1,39 @@
+# AGENTS.md — Luca Ramseyer brand
+
+Use this design system when building any UI, site, email, or graphic for the Luca Ramseyer / raml.ch personal brand. Keep it minimal and faithful; the whole identity is restraint.
+
+## Non-negotiable rules
+- **Never invent colours or fonts.** Use only the tokens below (full set: `tokens/tokens.css`, Tailwind: `tokens/theme.css`, raw: `tokens.json`).
+- **Two typefaces only:** Cormorant Garamond (display/headings, wordmark) and Montserrat (body/UI/labels). Do not add a third family.
+- **Red is seasoning,** not a theme colour. One accent per view at most (a hover, a dot, a single button). Backgrounds and large areas are paper or ink.
+- **The wordmark "LUCA RAMSEYER"** is set in Cormorant Garamond Medium, all caps, letter-spacing `0.24em`. Never tighten the tracking, recolour it, stretch it, or add effects.
+- **The mark** is a muted-red rounded square with the cross knocked out (paper/white shows through). Cross geometry is fixed: arm thickness 21.5% of the square, arm length 62%, corner radius 10%. Assets in `assets/`.
+
+## Tokens (authoritative values live in tokens.json)
+- Colours: paper `#F4EFE4`, surface `#FBF8F1`, ink `#211F1C`, body `#423D37`, muted `#857E72`, red `#C0473A`, red-deep `#A63B30`, line `#DAD2C4`.
+- Type scale (px): display 56, h1 40, h2 30, h3 21, body 16, small 13, eyebrow 12.
+- Body line-height 1.75; heading line-height 1.15. Eyebrows/labels: uppercase, tracked (`0.14em`–`0.22em`).
+- Spacing scale (px): 8 / 16 / 24 / 32 / 48 / 64 / 96. UI radius 3px.
+
+## Defaults when building
+- Plain web: link `tokens/tokens.css`, then use `var(--ink)`, `var(--serif)`, `var(--s4)`, etc.
+- Tailwind v4: `@import "tailwindcss";` then `@import "./theme.css";` → utilities like `bg-paper text-ink font-display text-h2 p-4`.
+- Webfonts: include the Google Fonts link from `tokens.json#font.googleImport`. Fallbacks are already in the font stacks.
+- Layout: generous whitespace; centre hero content; left-align reading content in a ~920px column. Whitespace is the primary design element — when unsure, remove something.
+- Components: near-square corners (3px), hairline (`--line`) borders, uppercase tracked button labels, 200ms colour transitions only. No shadows, no gradients.
+
+## Voice
+Calm, precise, expert. Plain verbs (block, review, restore). Explain security without fear or hype. Never "100% secure". Sentence case, no exclamation stacks.
+
+## Print note
+On paper, ink = rich black `C40 M30 Y30 K100`; red = `C0 M65 Y72 K22`. Cards print with no background ink — the cream comes from the stock.
+
+## Licensing (fonts) — IMPORTANT
+Both typefaces are under the **SIL Open Font License 1.1** — free for personal and commercial use, including embedding. License files live in `fonts/` (`OFL-CormorantGaramond.txt`, `OFL-Montserrat.txt`).
+- **Include the matching OFL file** in your output ONLY when you redistribute the font *files themselves*: self-hosting webfonts (`.woff2`/`.ttf`) on a site, or bundling fonts into an app/installer. Put the `OFL-*.txt` in the same folder as the fonts.
+- **Do NOT add a license file** when: loading from the Google Fonts CDN (the default), or producing documents/exports (PDF, PNG, SVG, the business card) — the OFL does not bind documents created with the fonts.
+- Never rename a modified font to "Cormorant" or "Montserrat" (reserved names apply to derivatives).
+- No attribution is required for normal use.
+
+## Regenerating
+`tokens.json` is the source of truth. After editing it run `python3 build_tokens.py` to rebuild `tokens/tokens.css`, `tokens/theme.css`, and the `:root` block + embedded JSON in `style-guide.html`. Do not hand-edit generated blocks.

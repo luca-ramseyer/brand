@@ -1,0 +1,35 @@
+/* Generated from tokens.json — do not edit by hand. */
+:root {
+  --paper: #F4EFE4;
+  --surface: #FBF8F1;
+  --ink: #211F1C;
+  --body: #423D37;
+  --muted: #857E72;
+  --red: #C0473A;
+  --red-deep: #A63B30;
+  --line: #DAD2C4;
+  --serif: 'Cormorant Garamond', 'Cormorant', Georgia, 'Times New Roman', serif;
+  --sans: 'Montserrat', 'Helvetica Neue', Arial, sans-serif;
+  --text-display: 56px;
+  --text-h1: 40px;
+  --text-h2: 30px;
+  --text-h3: 21px;
+  --text-body: 16px;
+  --text-small: 13px;
+  --text-eyebrow: 12px;
+  --tracking-wordmark: 0.24em;
+  --tracking-label: 0.14em;
+  --tracking-eyebrow: 0.22em;
+  --leading-body: 1.75;
+  --leading-tight: 1.15;
+  --s1: 8px;
+  --s2: 16px;
+  --s3: 24px;
+  --s4: 32px;
+  --s5: 48px;
+  --s6: 64px;
+  --s7: 96px;
+  --radius-ui: 3px;
+  --motion-fast: 200ms;
+  --maxw: 920px;
+}

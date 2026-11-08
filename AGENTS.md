@@ -14,7 +14,7 @@ Use this design system when building any UI, site, email, or graphic for the Luc
 - Dark mode (automatic in `tokens/tokens.css` via `prefers-color-scheme`): paper `#1C1A18`, surface `#24221F`, ink `#F4EFE4`, body `#CFC8BB`, muted `#A39B8E`, red `#DB6B5D`, line `#36332E`. Use tokens, never light-only hex values.
 - Charts in order: `--chart-1` ink (main series), `--chart-2` red (only the one value that matters), then stone, sage, sand.
 - Type scale (px): display 56, h1 44, h2 28, h3 19 (600), body 16, small 13, label 12.
-- Headings: weight 500, letter-spacing `-0.02em` (display `-0.03em`), line-height 1.1, sentence case. Body 400, line-height 1.6. Labels: 12px 500 uppercase `0.08em`, sparingly. Buttons sentence case.
+- Headings: weight 500, letter-spacing `-0.02em` (display `-0.03em`), line-height 1.1, sentence case. Body 400, line-height 1.6. Labels: 12px 500 uppercase `0.08em`, sparingly. Buttons sentence case. Tabular figures only in aligned columns (Schibsted's tabular set also widens `.` and `,`).
 - Spacing scale (px): 8 / 16 / 24 / 32 / 48 / 64 / 96. Radius: 6px controls, 8px cards.
 
 ## Defaults when building

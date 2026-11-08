@@ -41,7 +41,7 @@ Usage balance: paper dominates (~70%), ink for type (~20%), muted small (~5%), r
 
 ## 4. Typography
 
-- **Schibsted Grotesk** (400 / 500 / 600) does all the work: headlines, body, labels, buttons, data. Headlines medium 500, tracked `-0.02em` (display `-0.03em`), sentence case. Tabular figures for numbers.
+- **Schibsted Grotesk** (400 / 500 / 600) does all the work: headlines, body, labels, buttons, data. Headlines medium 500, tracked `-0.02em` (display `-0.03em`), sentence case. Tabular figures only in aligned columns such as tables; prices and stats use default figures.
 - **Cormorant Garamond** Medium is the signature only: the wordmark and the LR monogram. Never headings or body.
 - Don't introduce a third family. Code may use the system monospace stack (`--mono`).
 

@@ -1,6 +1,6 @@
 # AGENTS.md — Luca Ramseyer brand
 
-Use this design system when building any UI, site, email, or graphic for the Luca Ramseyer / raml.ch personal brand. Keep it minimal and faithful; the whole identity is restraint.
+Use this design system when building any UI, site, email, or graphic for the Luca Ramseyer / lram.ch personal brand. Keep it minimal and faithful; the whole identity is restraint.
 
 ## Non-negotiable rules
 - **Never invent colours or fonts.** Use only the tokens below (full set: `tokens/tokens.css`, Tailwind: `tokens/theme.css`, raw: `tokens.json`).

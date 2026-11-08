@@ -9,7 +9,7 @@ Older exported assets (banners, wallpapers) were set with Montserrat before v2.0
 
 ## When you MUST include the OFL file
 
-Only when you **redistribute the font files themselves**, e.g. self-hosting webfonts (`.woff2`/`.ttf`) on raml.ch or bundling a font into an app. Keep the matching `OFL-*.txt` in the same folder as the fonts, and don't rename a modified font to "Cormorant" or "Schibsted Grotesk".
+Only when you **redistribute the font files themselves**, e.g. self-hosting webfonts (`.woff2`/`.ttf`) on lram.ch or bundling a font into an app. Keep the matching `OFL-*.txt` in the same folder as the fonts, and don't rename a modified font to "Cormorant" or "Schibsted Grotesk".
 
 ## When you DON'T need it
 

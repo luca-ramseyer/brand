@@ -1,6 +1,6 @@
 # Luca Ramseyer — Brand
 
-> Visual identity and design system for the Luca Ramseyer / raml.ch personal brand (systems, cybersecurity, software). Quiet, precise, Swiss restraint: paper-and-ink palette with a dark mode, Schibsted Grotesk with a Cormorant Garamond wordmark, one muted-red accent used sparingly. Mobile first.
+> Visual identity and design system for the Luca Ramseyer / lram.ch personal brand (systems, cybersecurity, software). Quiet, precise, Swiss restraint: paper-and-ink palette with a dark mode, Schibsted Grotesk with a Cormorant Garamond wordmark, one muted-red accent used sparingly. Mobile first.
 
 When designing or coding anything for this brand, use the tokens verbatim and follow the rules. Never invent colours or fonts; red is an accent only; keep the wordmark's wide letter-spacing; design for phones first.
 

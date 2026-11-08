@@ -1,8 +1,10 @@
 # Luca Ramseyer — Brand
 
-> Visual identity and design system for the Luca Ramseyer / raml.ch personal brand (systems, cybersecurity, software). Quiet, precise, Swiss restraint: paper-and-ink palette, Cormorant Garamond + Montserrat, one muted-red accent used sparingly.
+> Visual identity and design system for the Luca Ramseyer / lram.ch personal brand (systems, cybersecurity, software). Quiet, precise, Swiss restraint: paper-and-ink palette with a dark mode, Schibsted Grotesk with a Cormorant Garamond wordmark, one muted-red accent used sparingly. Mobile first.
 
-When designing or coding anything for this brand, use the tokens verbatim and follow the rules. Never invent colours or fonts; red is an accent only; keep the wordmark's wide letter-spacing.
+When designing or coding anything for this brand, use the tokens verbatim and follow the rules. Never invent colours or fonts; red is an accent only; keep the wordmark's wide letter-spacing; design for phones first.
+
+- [Ready-made CSS](https://pages.lram.ch/brand.css): tokens (light + dark) and components in one stylesheet.
 
 ## Core
 - [Agent rules](AGENTS.md): authoritative, concise instructions for coding agents.
@@ -19,5 +21,5 @@ When designing or coding anything for this brand, use the tokens verbatim and fo
 
 ## Licensing
 - Fonts are under the SIL Open Font License 1.1 (free for commercial use). See [fonts/README.md](fonts/README.md) for when a licence file must be shipped.
-- [Cormorant Garamond OFL](fonts/OFL-CormorantGaramond.txt) · [Montserrat OFL](fonts/OFL-Montserrat.txt)
+- [Schibsted Grotesk OFL](fonts/OFL-SchibstedGrotesk.txt) · [Cormorant Garamond OFL](fonts/OFL-CormorantGaramond.txt)
 - Include the matching OFL file only when redistributing the font files (self-hosting webfonts or bundling in an app); not for CDN use or document exports.

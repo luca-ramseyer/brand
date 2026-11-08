@@ -2,11 +2,11 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Luca Ramseyer — Brand Guidelines</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500&family=Schibsted+Grotesk:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
   :root{
     /* TOKENS:START — generated from tokens.json by build_tokens.py. Do not edit by hand. */
@@ -14,24 +14,36 @@
     --surface:#FBF8F1;
     --ink:#211F1C;
     --body:#423D37;
-    --muted:#857E72;
+    --muted:#6F685D;
+    --stone:#857E72;
     --red:#C0473A;
     --red-deep:#A63B30;
     --line:#DAD2C4;
+    --good:#5B7A52;
     --serif:'Cormorant Garamond', 'Cormorant', Georgia, 'Times New Roman', serif;
-    --sans:'Montserrat', 'Helvetica Neue', Arial, sans-serif;
+    --sans:'Schibsted Grotesk', 'Helvetica Neue', Arial, sans-serif;
+    --mono:ui-monospace, 'SF Mono', Menlo, Consolas, monospace;
+    --chart-1:#211F1C;
+    --chart-2:#C0473A;
+    --chart-3:#857E72;
+    --chart-4:#5B7A52;
+    --chart-5:#C9BFAE;
     --text-display:56px;
-    --text-h1:40px;
-    --text-h2:30px;
-    --text-h3:21px;
+    --text-h1:44px;
+    --text-h2:28px;
+    --text-h3:19px;
     --text-body:16px;
     --text-small:13px;
-    --text-eyebrow:12px;
+    --text-label:12px;
     --tracking-wordmark:0.24em;
-    --tracking-label:0.14em;
-    --tracking-eyebrow:0.22em;
-    --leading-body:1.75;
-    --leading-tight:1.15;
+    --tracking-display:-0.03em;
+    --tracking-heading:-0.02em;
+    --tracking-label:0.08em;
+    --leading-body:1.6;
+    --leading-tight:1.1;
+    --weight-body:400;
+    --weight-heading:500;
+    --weight-strong:600;
     --s1:8px;
     --s2:16px;
     --s3:24px;
@@ -39,35 +51,40 @@
     --s5:48px;
     --s6:64px;
     --s7:96px;
-    --radius-ui:3px;
+    --radius-ui:6px;
+    --radius-card:8px;
     --motion-fast:200ms;
+    --motion-press:140ms;
+    --motion-enter:500ms;
+    --ease-out:cubic-bezier(0.23, 1, 0.32, 1);
+    --press-scale:0.97;
     --maxw:920px;
     /* TOKENS:END */
   }
 
   *{box-sizing:border-box;}
-  html{ -webkit-text-size-adjust:100%; }
+  html{ -webkit-text-size-adjust:100%; -webkit-tap-highlight-color:transparent; }
   body{
     margin:0; background:var(--paper); color:var(--body);
-    font-family:var(--sans); font-weight:400; font-size:16px; line-height:1.75;
+    font-family:var(--sans); font-weight:400; font-size:16px; line-height:1.6;
     -webkit-font-smoothing:antialiased; text-rendering:optimizeLegibility;
   }
   .wrap{ max-width:var(--maxw); margin:0 auto; padding:0 var(--s4); }
 
   /* ---------- type primitives ---------- */
   .eyebrow{
-    font-family:var(--sans); font-weight:500; font-size:11.5px;
-    letter-spacing:.22em; text-transform:uppercase; color:var(--muted);
+    font-family:var(--sans); font-weight:500; font-size:12px;
+    letter-spacing:.08em; text-transform:uppercase; color:var(--muted);
     margin:0 0 var(--s2);
   }
   .eyebrow .num{ color:var(--red); margin-right:.5em; }
-  h1,h2,h3{ font-family:var(--serif); color:var(--ink); font-weight:500; margin:0; }
+  h1,h2,h3{ font-family:var(--sans); color:var(--ink); font-weight:500; margin:0; letter-spacing:-.02em; text-wrap:balance; }
   h2{ font-size:clamp(26px,4vw,34px); letter-spacing:.01em; line-height:1.15; }
   h3{ font-size:21px; font-weight:600; margin:0 0 var(--s1); letter-spacing:.01em; }
   p{ margin:0 0 var(--s2); max-width:64ch; }
   .lead{ font-size:18px; color:var(--body); }
   a{ color:var(--ink); text-decoration:none; border-bottom:1px solid var(--line); transition:border-color .2s, color .2s; }
-  a:hover{ color:var(--red); border-color:var(--red); }
+  @media (hover:hover){ a:hover{ color:var(--red); border-color:var(--red); } }
   .dot{ color:var(--red); padding:0 .45em; }
 
   /* ---------- hero ---------- */
@@ -90,12 +107,12 @@
   .hero .tagline .sep{ color:var(--red); padding:0 .6em; }
   .hero .rule{ width:54px; height:1px; background:var(--line); margin:var(--s5) 0 var(--s4); }
   .hero .docline{
-    font-family:var(--sans); font-weight:500; letter-spacing:.22em;
+    font-family:var(--sans); font-weight:500; letter-spacing:.08em;
     text-transform:uppercase; font-size:11.5px; color:var(--muted);
   }
   .hero .meta{ margin-top:var(--s2); font-size:13px; color:var(--muted); letter-spacing:.04em; }
-  .fade{ opacity:0; transform:translateY(10px); animation:rise .9s ease forwards; }
-  .fade.d1{ animation-delay:.05s;} .fade.d2{ animation-delay:.22s;} .fade.d3{ animation-delay:.4s;} .fade.d4{ animation-delay:.56s;}
+  .fade{ opacity:0; transform:translateY(8px); animation:rise .5s cubic-bezier(.23,1,.32,1) forwards; }
+  .fade.d1{ animation-delay:.05s;} .fade.d2{ animation-delay:.12s;} .fade.d3{ animation-delay:.2s;} .fade.d4{ animation-delay:.28s;}
   @keyframes rise{ to{opacity:1; transform:none;} }
   @media (prefers-reduced-motion:reduce){ .fade{ animation:none; opacity:1; transform:none; } }
 
@@ -108,14 +125,14 @@
   /* ---------- contents ---------- */
   .toc{ display:grid; grid-template-columns:repeat(2,1fr); gap:var(--s1) var(--s5); margin-top:var(--s3);}
   .toc a{ border:0; display:flex; align-items:baseline; gap:.7em; font-size:15px; color:var(--body); padding:6px 0; }
-  .toc a:hover{ color:var(--red); }
-  .toc .n{ font-family:var(--serif); font-size:18px; color:var(--red); min-width:1.4em; }
+  @media (hover:hover){ .toc a:hover{ color:var(--red); } }
+  .toc .n{ font-family:var(--sans); font-size:13px; font-variant-numeric:tabular-nums; color:var(--red); min-width:1.8em; }
 
   /* ---------- marks / logo ---------- */
   .mark-svg{ display:block; }
   .logo-row{ display:flex; flex-wrap:wrap; gap:var(--s4); align-items:stretch; }
   .panel{
-    background:var(--surface); border:1px solid var(--line); border-radius:3px;
+    background:var(--surface); border:1px solid var(--line); border-radius:8px;
     padding:var(--s5) var(--s4);
   }
   .panel.center{ text-align:center; display:flex; flex-direction:column; align-items:center; justify-content:center; }
@@ -134,18 +151,18 @@
 
   /* do / don't */
   .dd{ display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:var(--s3); margin-top:var(--s2);}
-  .dd .item{ background:var(--surface); border:1px solid var(--line); border-radius:3px; padding:var(--s4) var(--s3); text-align:center; min-height:150px; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:6px; }
-  .dd .tag{ font-family:var(--sans); font-size:11px; letter-spacing:.14em; text-transform:uppercase; margin-top:8px; }
+  .dd .item{ background:var(--surface); border:1px solid var(--line); border-radius:8px; padding:var(--s4) var(--s3); text-align:center; min-height:150px; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:6px; }
+  .dd .tag{ font-family:var(--sans); font-size:11px; letter-spacing:.08em; text-transform:uppercase; margin-top:8px; }
   .dd .yes .tag{ color:#5b7a52; } .dd .no .tag{ color:var(--red); }
   .dd .yes{ border-color:#cdd6c4; } 
   .badwm{ font-family:var(--serif); font-weight:500; color:var(--ink); font-size:18px; }
 
   /* ---------- colour ---------- */
   .swatches{ display:grid; grid-template-columns:repeat(auto-fit,minmax(180px,1fr)); gap:var(--s3); }
-  .sw{ border:1px solid var(--line); border-radius:3px; overflow:hidden; background:var(--surface); }
+  .sw{ border:1px solid var(--line); border-radius:8px; overflow:hidden; background:var(--surface); }
   .sw .chip{ height:120px; }
   .sw .info{ padding:14px 16px 16px; }
-  .sw .name{ font-family:var(--serif); font-size:19px; color:var(--ink); font-weight:600; }
+  .sw .name{ font-family:var(--sans); font-size:16px; color:var(--ink); font-weight:600; letter-spacing:-.01em; }
   .sw .role{ font-size:11.5px; letter-spacing:.04em; color:var(--muted); margin-bottom:10px; }
   .sw .val{ font-family:var(--sans); font-size:12px; color:var(--body); display:flex; justify-content:space-between; gap:8px; padding:2px 0; border-top:1px solid var(--line); }
   .sw .val span:first-child{ color:var(--muted); letter-spacing:.08em; text-transform:uppercase; font-size:10.5px; }
@@ -154,27 +171,30 @@
 
   /* ---------- type specimen ---------- */
   .scale-row{ display:flex; align-items:baseline; gap:var(--s3); padding:var(--s2) 0; border-bottom:1px solid var(--line); flex-wrap:wrap; }
-  .scale-row .spec{ font-family:var(--sans); font-size:11px; letter-spacing:.1em; text-transform:uppercase; color:var(--muted); min-width:160px; }
+  .scale-row .spec{ font-family:var(--sans); font-size:11px; letter-spacing:.08em; text-transform:uppercase; color:var(--muted); min-width:160px; }
   .sample-serif{ font-family:var(--serif); color:var(--ink); }
+  .sample-head{ font-family:var(--sans); color:var(--ink); font-weight:500; letter-spacing:-.02em; line-height:1.1; }
   .sample-sans{ font-family:var(--sans); color:var(--ink); }
   .codeblock{ font-family:ui-monospace,'SF Mono',Menlo,Consolas,monospace; font-size:12.5px; color:var(--body);
-    background:var(--surface); border:1px solid var(--line); border-radius:3px; padding:14px 16px; overflow:auto; white-space:pre; line-height:1.6; }
+    background:var(--surface); border:1px solid var(--line); border-radius:8px; padding:14px 16px; overflow:auto; white-space:pre; line-height:1.6; }
 
   /* ---------- components ---------- */
   .btn{ display:inline-flex; align-items:center; justify-content:center; font-family:var(--sans);
-    font-weight:500; font-size:12.5px; letter-spacing:.14em; text-transform:uppercase;
-    padding:13px 26px; border-radius:3px; border:1px solid var(--ink); cursor:pointer; transition:all .2s; text-decoration:none; }
+    font-weight:500; font-size:14px; letter-spacing:0;
+    padding:12px 20px; border-radius:6px; border:1px solid var(--ink); cursor:pointer; transition:background-color .2s, border-color .2s, color .2s, transform 140ms cubic-bezier(.23,1,.32,1); text-decoration:none; touch-action:manipulation; -webkit-user-select:none; user-select:none; }
+  .btn:active{ transform:scale(.97); }
+  @media (pointer:coarse){ .btn{ min-height:44px; } }
   .btn-primary{ background:var(--ink); color:var(--paper); }
-  .btn-primary:hover{ background:#000; border-color:#000; color:var(--paper); }
+  @media (hover:hover){ .btn-primary:hover{ background:#000; border-color:#000; color:var(--paper); } }
   .btn-ghost{ background:transparent; color:var(--ink); }
-  .btn-ghost:hover{ background:var(--ink); color:var(--paper); }
+  @media (hover:hover){ .btn-ghost:hover{ background:var(--ink); color:var(--paper); } }
   .btn-accent{ background:var(--red); border-color:var(--red); color:#fff; }
-  .btn-accent:hover{ background:var(--red-deep); border-color:var(--red-deep); }
+  @media (hover:hover){ .btn-accent:hover{ background:var(--red-deep); border-color:var(--red-deep); } }
   .row{ display:flex; gap:var(--s2); flex-wrap:wrap; align-items:center; }
-  .field{ display:block; width:100%; max-width:360px; font-family:var(--sans); font-size:14px; color:var(--ink);
-    background:var(--surface); border:1px solid var(--line); border-radius:3px; padding:12px 14px; }
+  .field{ display:block; width:100%; max-width:360px; font-family:var(--sans); font-size:16px; color:var(--ink);
+    background:var(--surface); border:1px solid var(--line); border-radius:6px; padding:12px 14px; }
   .field:focus{ outline:none; border-color:var(--ink); }
-  .label{ font-family:var(--sans); font-size:11px; letter-spacing:.14em; text-transform:uppercase; color:var(--muted); display:block; margin-bottom:8px; }
+  .label{ font-family:var(--sans); font-size:11px; letter-spacing:.08em; text-transform:uppercase; color:var(--muted); display:block; margin-bottom:8px; }
   .divider-dot{ display:flex; align-items:center; gap:14px; color:var(--line); }
   .divider-dot::before,.divider-dot::after{ content:""; height:1px; background:var(--line); flex:1; }
   .divider-dot b{ color:var(--red); font-size:18px; }
@@ -183,16 +203,16 @@
   .email-mock{ background:#fff; border:1px solid var(--line); border-radius:4px; overflow:hidden; }
   .email-body{ padding:var(--s6) var(--s5); text-align:center; }
   .email-body .wm{ font-size:24px; }
-  .email-h{ font-family:var(--serif); font-size:26px; color:var(--ink); margin:var(--s4) 0 var(--s2); }
+  .email-h{ font-family:var(--sans); font-weight:500; letter-spacing:-.02em; font-size:24px; color:var(--ink); margin:var(--s4) 0 var(--s2); }
   .email-p{ font-size:14.5px; color:var(--body); max-width:42ch; margin:0 auto var(--s3); }
   .email-foot{ background:var(--paper); border-top:1px solid var(--line); padding:22px; text-align:center; font-size:11.5px; color:var(--muted); letter-spacing:.04em; }
 
   .sig{ display:flex; gap:18px; align-items:center; background:#fff; border:1px solid var(--line); border-radius:4px; padding:20px 24px; }
-  .sig .id .n{ font-family:var(--serif); font-size:20px; color:var(--ink); font-weight:600; letter-spacing:.04em; }
-  .sig .id .t{ font-family:var(--sans); font-size:11px; letter-spacing:.12em; text-transform:uppercase; color:var(--muted); margin-top:3px; }
+  .sig .id .n{ font-family:var(--sans); font-size:17px; color:var(--ink); font-weight:600; letter-spacing:-.01em; }
+  .sig .id .t{ font-family:var(--sans); font-size:11px; letter-spacing:.08em; text-transform:uppercase; color:var(--muted); margin-top:3px; }
   .sig .id .c{ font-family:var(--sans); font-size:12.5px; color:var(--body); margin-top:10px; line-height:1.7; }
   .sig .id .c a{ border:0; color:var(--body); }
-  .sig .id .c a:hover{ color:var(--red); }
+  @media (hover:hover){ .sig .id .c a:hover{ color:var(--red); } }
   .sig .bar{ width:1px; align-self:stretch; background:var(--line); }
 
   /* ---------- social ---------- */
@@ -207,14 +227,14 @@
   .banner .wm{ font-size:clamp(20px,4vw,34px); }
   .post{ width:100%; aspect-ratio:1/1; background:var(--paper); border:1px solid var(--line); border-radius:4px; position:relative;
     display:flex; flex-direction:column; align-items:flex-start; justify-content:flex-end; padding:var(--s4); }
-  .post .kicker{ font-family:var(--sans); font-size:10px; letter-spacing:.2em; text-transform:uppercase; color:var(--muted); }
-  .post .ph{ font-family:var(--serif); font-size:clamp(20px,3.6vw,30px); color:var(--ink); line-height:1.15; margin-top:8px; }
+  .post .kicker{ font-family:var(--sans); font-size:10px; letter-spacing:.08em; text-transform:uppercase; color:var(--muted); }
+  .post .ph{ font-family:var(--sans); font-weight:500; letter-spacing:-.02em; font-size:clamp(19px,3.2vw,26px); color:var(--ink); line-height:1.15; margin-top:8px; }
   .post .mk{ position:absolute; top:var(--s4); left:var(--s4); }
 
   /* ---------- voice ---------- */
   .voice{ display:grid; grid-template-columns:1fr 1fr; gap:var(--s3); }
-  .voice .col{ background:var(--surface); border:1px solid var(--line); border-radius:3px; padding:var(--s4); }
-  .voice .col .h{ font-family:var(--sans); font-size:11px; letter-spacing:.16em; text-transform:uppercase; margin-bottom:var(--s2); }
+  .voice .col{ background:var(--surface); border:1px solid var(--line); border-radius:8px; padding:var(--s4); }
+  .voice .col .h{ font-family:var(--sans); font-size:11px; letter-spacing:.08em; text-transform:uppercase; margin-bottom:var(--s2); }
   .voice .yes .h{ color:#5b7a52; } .voice .no .h{ color:var(--red); }
   .voice ul{ margin:0; padding-left:18px; } .voice li{ margin-bottom:10px; font-size:14.5px; }
 
@@ -224,7 +244,25 @@
   footer .ft-tag{ font-size:11px; letter-spacing:.18em; color:var(--muted); margin-top:14px; }
   footer .ft-meta{ font-size:11.5px; color:var(--muted); margin-top:var(--s4); letter-spacing:.06em; }
   footer .ft-meta a{ color:var(--muted); border-bottom:1px solid var(--line); }
-  footer .ft-meta a:hover{ color:var(--red); border-color:var(--red); }
+  @media (hover:hover){ footer .ft-meta a:hover{ color:var(--red); border-color:var(--red); } }
+
+  /* ---------- v1.1 additions ---------- */
+  .rules{ margin:var(--s2) 0 0; padding-left:18px; max-width:68ch; }
+  .rules li{ margin-bottom:10px; font-size:14.5px; }
+  .rules li::marker{ color:var(--red); }
+  .strip{ display:flex; height:56px; border-radius:3px; overflow:hidden; border:1px solid var(--line); margin-top:var(--s2); }
+  .strip i{ flex:1; display:flex; align-items:flex-end; padding:6px 8px; font-style:normal; font-size:10.5px; letter-spacing:.06em; }
+  .dark-demo{ background:#1C1A18; color:#CFC8BB; border-radius:3px; padding:var(--s4); margin-top:var(--s2); }
+  .dark-demo .t{ font-family:var(--sans); font-weight:500; letter-spacing:-.02em; font-size:24px; color:#F4EFE4; }
+  .dark-demo .c{ font-size:13px; color:#A39B8E; margin-top:6px; }
+  .dark-demo .btn{ margin-top:var(--s3); background:#F4EFE4; color:#1C1A18; border-color:#F4EFE4; }
+  .phone{ width:220px; border:1px solid var(--line); border-radius:28px; padding:14px 10px; background:var(--surface); flex:none; }
+  .phone .scr{ background:var(--paper); border-radius:18px; padding:28px 16px 20px; min-height:340px; }
+  .phone .wm{ font-size:9.5px; letter-spacing:.24em; }
+  .phone .h{ font-family:var(--sans); font-weight:500; letter-spacing:-.02em; font-size:21px; line-height:1.15; color:var(--ink); margin:22px 0 8px; }
+  .phone .p{ font-size:11px; line-height:1.6; }
+  .phone .b{ display:flex; align-items:center; justify-content:center; height:30px; margin-top:16px; background:var(--ink); color:var(--paper); font-size:10px; font-weight:500; border-radius:5px; }
+  .phone .bar{ height:7px; background:var(--ink); margin-top:10px; } .phone .bar.s{ width:62%; background:#C9BFAE; }
 
   @media (max-width:680px){
     .toc{ grid-template-columns:1fr; }
@@ -232,9 +270,11 @@
     section{ padding:var(--s6) 0; }
     .sig{ flex-direction:column; align-items:flex-start; }
     .sig .bar{ display:none; }
+    .wrap{ padding:0 max(16px, env(safe-area-inset-left), env(safe-area-inset-right)); }
+    .phone{ margin:0 auto; }
   }
 </style>
-  <script type="application/json" id="brand-tokens">{"$name":"Luca Ramseyer — Brand Tokens","$description":"Single source of truth. Run build_tokens.py to regenerate tokens/tokens.css, tokens/theme.css and the :root block + embedded JSON in style-guide.html.","$version":"1.0.0","color":{"paper":{"hex":"#F4EFE4","rgb":"244 239 228","cmyk":"4 6 11 0","role":"primary surface / paper"},"surface":{"hex":"#FBF8F1","rgb":"251 248 241","cmyk":"1 2 5 0","role":"elevated panels / cards"},"ink":{"hex":"#211F1C","rgb":"33 31 28","cmyk":"40 30 30 100","role":"wordmark / headings (print: rich black)"},"body":{"hex":"#423D37","rgb":"66 61 55","cmyk":"0 0 0 82","role":"body text"},"muted":{"hex":"#857E72","rgb":"133 126 114","cmyk":"0 5 14 48","role":"captions / secondary"},"red":{"hex":"#C0473A","rgb":"192 71 58","cmyk":"0 65 72 22","role":"accent — use sparingly"},"red-deep":{"hex":"#A63B30","rgb":"166 59 48","cmyk":"0 64 71 35","role":"accent hover / pressed"},"line":{"hex":"#DAD2C4","rgb":"218 210 196","cmyk":"0 4 10 15","role":"hairline rules / borders"}},"font":{"serif":"'Cormorant Garamond', 'Cormorant', Georgia, 'Times New Roman', serif","sans":"'Montserrat', 'Helvetica Neue', Arial, sans-serif","googleImport":"https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Montserrat:wght@300;400;500;600&display=swap"},"license":{"fonts":{"id":"SIL Open Font License 1.1","url":"https://openfontlicense.org","commercialUse":true,"attributionRequired":false,"note":"Free for personal & commercial use, including embedding and modification. Include the matching OFL file ONLY when redistributing the font FILES themselves (e.g. self-hosting webfonts or bundling in an app). Documents/exports (PDF, PNG, SVG) and Google Fonts CDN usage need NO license file.","files":{"Cormorant Garamond":{"copyright":"Copyright 2015 The Cormorant Project Authors (github.com/CatharsisFonts/Cormorant)","ofl":"fonts/OFL-CormorantGaramond.txt","reservedFontName":false},"Montserrat":{"copyright":"Copyright 2024 The Montserrat Project Authors (github.com/JulietaUla/Montserrat)","ofl":"fonts/OFL-Montserrat.txt","reservedFontName":false}}}},"type":{"display":56,"h1":40,"h2":30,"h3":21,"body":16,"small":13,"eyebrow":12},"tracking":{"wordmark":"0.24em","label":"0.14em","eyebrow":"0.22em"},"leading":{"body":1.75,"tight":1.15},"space":[8,16,24,32,48,64,96],"radius":{"ui":"3px","mark":"10%"},"motion":{"fast":"200ms"},"layout":{"maxWidth":"920px"}}</script>
+  <script type="application/json" id="brand-tokens">{"$name":"Luca Ramseyer — Brand Tokens","$description":"Single source of truth. Run build_tokens.py to regenerate tokens/tokens.css, tokens/theme.css and the :root block + embedded JSON in style-guide.html.","$version":"2.0.0","color":{"paper":{"hex":"#F4EFE4","rgb":"244 239 228","cmyk":"4 6 11 0","role":"primary surface / paper"},"surface":{"hex":"#FBF8F1","rgb":"251 248 241","cmyk":"1 2 5 0","role":"elevated panels / cards"},"ink":{"hex":"#211F1C","rgb":"33 31 28","cmyk":"40 30 30 100","role":"wordmark / headings (print: rich black)"},"body":{"hex":"#423D37","rgb":"66 61 55","cmyk":"0 0 0 82","role":"body text"},"muted":{"hex":"#6F685D","rgb":"111 104 93","cmyk":"0 6 16 56","role":"captions / secondary text (4.8:1 on paper, passes WCAG AA)"},"stone":{"hex":"#857E72","rgb":"133 126 114","cmyk":"0 5 14 48","role":"non-text only: icons, disabled states, chart series (3.5:1, too light for small text)"},"red":{"hex":"#C0473A","rgb":"192 71 58","cmyk":"0 65 72 22","role":"accent — use sparingly"},"red-deep":{"hex":"#A63B30","rgb":"166 59 48","cmyk":"0 64 71 35","role":"accent hover / pressed"},"line":{"hex":"#DAD2C4","rgb":"218 210 196","cmyk":"0 4 10 15","role":"hairline rules / borders"},"good":{"hex":"#5B7A52","rgb":"91 122 82","cmyk":"25 0 33 52","role":"positive / success, sparingly"}},"font":{"serif":"'Cormorant Garamond', 'Cormorant', Georgia, 'Times New Roman', serif","sans":"'Schibsted Grotesk', 'Helvetica Neue', Arial, sans-serif","googleImport":"https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500&family=Schibsted+Grotesk:wght@400;500;600&display=swap","mono":"ui-monospace, 'SF Mono', Menlo, Consolas, monospace","$roles":"serif: the wordmark and LR monogram only. sans: everything else (headings, body, UI, data)."},"license":{"fonts":{"id":"SIL Open Font License 1.1","url":"https://openfontlicense.org","commercialUse":true,"attributionRequired":false,"note":"Free for personal & commercial use, including embedding and modification. Include the matching OFL file ONLY when redistributing the font FILES themselves (e.g. self-hosting webfonts or bundling in an app). Documents/exports (PDF, PNG, SVG) and Google Fonts CDN usage need NO license file.","files":{"Cormorant Garamond":{"copyright":"Copyright 2015 The Cormorant Project Authors (github.com/CatharsisFonts/Cormorant)","ofl":"fonts/OFL-CormorantGaramond.txt","reservedFontName":false},"Schibsted Grotesk":{"copyright":"Copyright 2023 The Schibsted-Grotesk Project Authors (github.com/schibsted/schibsted-grotesk)","ofl":"fonts/OFL-SchibstedGrotesk.txt","reservedFontName":false}}}},"type":{"display":56,"h1":44,"h2":28,"h3":19,"body":16,"small":13,"label":12},"tracking":{"wordmark":"0.24em","display":"-0.03em","heading":"-0.02em","label":"0.08em"},"leading":{"body":1.6,"tight":1.1},"space":[8,16,24,32,48,64,96],"radius":{"ui":"6px","card":"8px","mark":"10%"},"motion":{"fast":"200ms","press":"140ms","enter":"500ms","easeOut":"cubic-bezier(0.23, 1, 0.32, 1)","pressScale":"0.97"},"layout":{"maxWidth":"920px"},"dark":{"$description":"Dark theme, after the mono-dark wallpapers: ink ground, cream type, one accent. Applied via prefers-color-scheme.","paper":"#1C1A18","surface":"#24221F","ink":"#F4EFE4","body":"#CFC8BB","muted":"#A39B8E","red":"#DB6B5D","red-deep":"#E58478","line":"#36332E","good":"#8FAE85"},"chart":{"$description":"Series order. Ink carries the main series; red only highlights the one value that matters.","light":["#211F1C","#C0473A","#857E72","#5B7A52","#C9BFAE"],"dark":["#F4EFE4","#DB6B5D","#A39B8E","#8FAE85","#5A554D"]},"weight":{"body":400,"heading":500,"strong":600}}</script>
 </head>
 <body>
 
@@ -244,7 +284,7 @@
   <div class="tagline fade d2">Systems<span class="sep">·</span>Cybersecurity<span class="sep">·</span>Software</div>
   <div class="rule fade d3"></div>
   <div class="docline fade d3">Brand &amp; Identity Guidelines</div>
-  <div class="meta fade d4">Version 1.0<span class="dot">·</span>raml.ch</div>
+  <div class="meta fade d4">Version 2.0<span class="dot">·</span>lram.ch</div>
 </header>
 
 <main class="wrap">
@@ -253,14 +293,14 @@
   <section id="intro" style="border-top:0;">
     <p class="eyebrow"><span class="num">00</span>Overview</p>
     <h2>A quiet, precise identity for systems, security and software.</h2>
-    <p class="lead" style="margin-top:var(--s3);">The brand is built on Swiss restraint: generous whitespace, a refined serif wordmark, one calm accent. It should feel considered and trustworthy — the visual equivalent of well-architected infrastructure. When in doubt, remove something.</p>
+    <p class="lead" style="margin-top:var(--s3);">The brand is built on Swiss restraint: generous whitespace, a clean modern grotesk, a refined serif wordmark, one calm accent. It should feel considered and trustworthy — the visual equivalent of well-architected infrastructure. When in doubt, remove something.</p>
     <div class="toc">
       <a href="#logo"><span class="n">01</span>Wordmark &amp; logo</a>
       <a href="#mark"><span class="n">02</span>The mark</a>
       <a href="#colour"><span class="n">03</span>Colour</a>
       <a href="#type"><span class="n">04</span>Typography</a>
       <a href="#components"><span class="n">05</span>Web components</a>
-      <a href="#layout"><span class="n">06</span>Layout &amp; spacing</a>
+      <a href="#layout"><span class="n">06</span>Layout, spacing &amp; mobile</a>
       <a href="#email"><span class="n">07</span>Email</a>
       <a href="#social"><span class="n">08</span>Social media</a>
       <a href="#wallpapers"><span class="n">09</span>Wallpapers</a>
@@ -274,7 +314,7 @@
     <div class="section-head">
       <p class="eyebrow"><span class="num">01</span>Wordmark &amp; logo</p>
       <h2>The wordmark</h2>
-      <p class="desc">The primary logo is the name set in Cormorant Garamond Medium, all caps, with wide tracking. The tagline sits beneath in Montserrat. Tracking is part of the identity — never tighten it.</p>
+      <p class="desc">The primary logo is the name set in Cormorant Garamond Medium, all caps, with wide tracking. The tagline sits beneath in Schibsted Grotesk. Tracking is part of the identity — never tighten it.</p>
     </div>
 
     <div class="logo-row">
@@ -384,8 +424,16 @@
         </div>
       </div>
       <div class="sw">
+        <div class="chip" style="background:#6F685D;"></div>
+        <div class="info"><div class="name">Stone Text</div><div class="role">Captions / secondary text · 4.8:1</div>
+          <div class="val"><span>HEX</span><b>#6F685D</b></div>
+          <div class="val"><span>RGB</span><b>111 · 104 · 93</b></div>
+          <div class="val"><span>CMYK</span><b>0 · 6 · 16 · 56</b></div>
+        </div>
+      </div>
+      <div class="sw">
         <div class="chip" style="background:#857E72;"></div>
-        <div class="info"><div class="name">Stone</div><div class="role">Captions / secondary</div>
+        <div class="info"><div class="name">Stone</div><div class="role">Non-text only: icons, disabled, charts</div>
           <div class="val"><span>HEX</span><b>#857E72</b></div>
           <div class="val"><span>RGB</span><b>133 · 126 · 114</b></div>
           <div class="val"><span>CMYK</span><b>0 · 5 · 14 · 48</b></div>
@@ -407,6 +455,14 @@
           <div class="val"><span>CMYK</span><b>0 · 4 · 10 · 15</b></div>
         </div>
       </div>
+      <div class="sw">
+        <div class="chip" style="background:#5B7A52;"></div>
+        <div class="info"><div class="name">Sage</div><div class="role">Positive / success, sparingly</div>
+          <div class="val"><span>HEX</span><b>#5B7A52</b></div>
+          <div class="val"><span>RGB</span><b>91 · 122 · 82</b></div>
+          <div class="val"><span>CMYK</span><b>25 · 0 · 33 · 52</b></div>
+        </div>
+      </div>
     </div>
 
     <h3 style="margin-top:var(--s6);">Usage balance</h3>
@@ -414,51 +470,78 @@
     <div class="ratio">
       <i style="background:#F4EFE4; flex:72;"></i>
       <i style="background:#211F1C; flex:20;"></i>
-      <i style="background:#857E72; flex:5;"></i>
+      <i style="background:#6F685D; flex:5;"></i>
       <i style="background:#C0473A; flex:3;"></i>
     </div>
-    <p style="margin-top:var(--s3); font-size:13px; color:var(--muted);">* Ink is screen <b>#211F1C</b>; in print use the rich black <b>C40 M30 Y30 K100</b> for the wordmark. For an official flag-red alternative on the mark, use Pantone&nbsp;485 (≈ #D52B1E). Body text on cream clears WCAG AA; reserve Stone for non-essential captions.</p>
+    <p style="margin-top:var(--s3); font-size:13px; color:var(--muted);">* Ink is screen <b>#211F1C</b>; in print use the rich black <b>C40 M30 Y30 K100</b> for the wordmark. For an official flag-red alternative on the mark, use Pantone&nbsp;485 (≈ #D52B1E). Body text and Stone Text on cream clear WCAG AA. Stone itself is only 3.5:1, so keep it off text.</p>
+
+    <h3 style="margin-top:var(--s6);">Dark mode</h3>
+    <p class="caption" style="margin-top:var(--s1);">Follows the device setting. Built from the mono-dark wallpapers: ink ground, cream type, a lifted red. Use the tokens and dark mode comes for free; never hardcode light-only colours.</p>
+    <div class="strip">
+      <i style="background:#1C1A18; color:#A39B8E;">Paper #1C1A18</i>
+      <i style="background:#24221F; color:#A39B8E;">Surface #24221F</i>
+      <i style="background:#F4EFE4; color:#1C1A18;">Ink #F4EFE4</i>
+      <i style="background:#CFC8BB; color:#1C1A18;">Body #CFC8BB</i>
+      <i style="background:#A39B8E; color:#1C1A18;">Muted #A39B8E</i>
+      <i style="background:#DB6B5D; color:#1C1A18;">Red #DB6B5D</i>
+    </div>
+    <div class="dark-demo">
+      <div class="t">Detection &amp; response</div>
+      <div class="c">Same hierarchy, same restraint, inverted ground.</div>
+      <span class="btn">Get in touch</span>
+    </div>
+
+    <h3 style="margin-top:var(--s6);">Charts</h3>
+    <p class="caption" style="margin-top:var(--s1);">Series in this order. Ink carries the main series; red marks only the one value that matters. Hairline gridlines, Stone Text labels, direct labels over legends.</p>
+    <div class="strip">
+      <i style="background:#211F1C; color:#F4EFE4;">1 Ink</i>
+      <i style="background:#C0473A; color:#fff;">2 Red</i>
+      <i style="background:#857E72; color:#fff;">3 Stone</i>
+      <i style="background:#5B7A52; color:#fff;">4 Sage</i>
+      <i style="background:#C9BFAE; color:#211F1C;">5 Sand</i>
+    </div>
   </section>
 
   <!-- 04 TYPE -->
   <section id="type">
     <div class="section-head">
       <p class="eyebrow"><span class="num">04</span>Typography</p>
-      <h2>Two typefaces, clear roles</h2>
-      <p class="desc">Cormorant Garamond carries every display moment — the wordmark, headlines, the occasional large quiet statement. Montserrat handles everything functional: body copy, labels, buttons, data. Don’t introduce a third family.</p>
+      <h2>One working typeface, one signature</h2>
+      <p class="desc">Schibsted Grotesk does all the work: headlines, body copy, labels, buttons, data. It is precise and quiet, with tight-set medium headlines. Cormorant Garamond is reserved for the signature: the wordmark and the LR monogram. Don’t introduce a third family.</p>
     </div>
 
     <div class="logo-row">
       <div class="panel grow">
-        <p class="eyebrow" style="margin-bottom:6px;">Display</p>
-        <div class="sample-serif" style="font-size:46px; line-height:1; letter-spacing:.01em;">Cormorant Garamond</div>
-        <div class="sample-serif" style="font-size:18px; color:var(--body); margin-top:14px;">Regular 400 · Medium 500 · SemiBold 600 · Italic</div>
-        <div class="caption">Headlines, wordmark (tracked +.24em, uppercase), pull quotes.</div>
+        <p class="eyebrow" style="margin-bottom:6px;">Everything</p>
+        <div class="sample-head" style="font-size:40px;">Schibsted Grotesk</div>
+        <div style="font-size:15px; color:var(--body); margin-top:14px;">Regular 400 · Medium 500 · SemiBold 600</div>
+        <div class="caption">Headlines (500, tracked −0.02em), body (400), labels and buttons (500), tabular figures for data.</div>
       </div>
       <div class="panel grow">
-        <p class="eyebrow" style="margin-bottom:6px;">Text &amp; UI</p>
-        <div class="sample-sans" style="font-size:34px; line-height:1; font-weight:500;">Montserrat</div>
-        <div class="sample-sans" style="font-size:15px; color:var(--body); margin-top:14px;">Light 300 · Regular 400 · Medium 500 · SemiBold 600</div>
-        <div class="caption">Body (400), labels &amp; buttons (500, uppercase, tracked +.14em).</div>
+        <p class="eyebrow" style="margin-bottom:6px;">Signature only</p>
+        <div class="wm" style="font-size:26px; text-indent:0;">LUCA RAMSEYER</div>
+        <div class="sample-serif" style="font-size:16px; color:var(--body); margin-top:14px;">Cormorant Garamond Medium 500</div>
+        <div class="caption">The wordmark (uppercase, tracked +0.24em) and the LR monogram. Never for headings or body.</div>
       </div>
     </div>
 
     <h3 style="margin-top:var(--s6);">Type scale</h3>
     <div style="margin-top:var(--s2);">
-      <div class="scale-row"><span class="spec">Display · Cormorant 500</span><span class="sample-serif" style="font-size:48px;">Architecture you can trust</span></div>
-      <div class="scale-row"><span class="spec">H1 · Cormorant 500 · 40</span><span class="sample-serif" style="font-size:40px;">Secure by design</span></div>
-      <div class="scale-row"><span class="spec">H2 · Cormorant 500 · 30</span><span class="sample-serif" style="font-size:30px;">Detection &amp; response</span></div>
-      <div class="scale-row"><span class="spec">H3 · Cormorant 600 · 21</span><span class="sample-serif" style="font-size:21px; font-weight:600;">Microsoft Sentinel &amp; Defender</span></div>
-      <div class="scale-row"><span class="spec">Eyebrow · Montserrat 500 · 12</span><span class="sample-sans" style="font-size:12px; letter-spacing:.22em; text-transform:uppercase; color:var(--muted);">Cyber Defence</span></div>
-      <div class="scale-row"><span class="spec">Body · Montserrat 400 · 16</span><span class="sample-sans" style="font-size:16px; max-width:48ch;">Clear, calm copy set at a comfortable 1.75 line-height. Avoid long all-caps passages.</span></div>
-      <div class="scale-row"><span class="spec">Small · Montserrat 400 · 13</span><span class="sample-sans" style="font-size:13px; color:var(--muted);">Captions, metadata and fine print.</span></div>
+      <div class="scale-row"><span class="spec">Display · 500 · 56</span><span class="sample-head" style="font-size:clamp(36px,6vw,56px); letter-spacing:-.03em;">Architecture you can trust</span></div>
+      <div class="scale-row"><span class="spec">H1 · 500 · 44</span><span class="sample-head" style="font-size:clamp(32px,5vw,44px);">Secure by design</span></div>
+      <div class="scale-row"><span class="spec">H2 · 500 · 28</span><span class="sample-head" style="font-size:28px;">Detection &amp; response</span></div>
+      <div class="scale-row"><span class="spec">H3 · 600 · 19</span><span class="sample-head" style="font-size:19px; font-weight:600; letter-spacing:-.01em;">Microsoft Sentinel &amp; Defender</span></div>
+      <div class="scale-row"><span class="spec">Label · 500 · 12</span><span class="sample-sans" style="font-size:12px; letter-spacing:.08em; text-transform:uppercase; color:var(--muted);">Cyber Defence</span></div>
+      <div class="scale-row"><span class="spec">Body · 400 · 16</span><span class="sample-sans" style="font-size:16px; max-width:48ch;">Clear, calm copy at a 1.6 line-height. Avoid long all-caps passages.</span></div>
+      <div class="scale-row"><span class="spec">Small · 400 · 13</span><span class="sample-sans" style="font-size:13px; color:var(--muted);">Captions, metadata and fine print.</span></div>
     </div>
 
     <h3 style="margin-top:var(--s6);">Web font setup</h3>
-    <div class="codeblock">&lt;link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&amp;family=Montserrat:wght@300;400;500;600&amp;display=swap" rel="stylesheet"&gt;
+    <div class="codeblock">&lt;link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500&amp;family=Schibsted+Grotesk:wght@400;500;600&amp;display=swap" rel="stylesheet"&gt;
 
---font-display: "Cormorant Garamond", Georgia, serif;
---font-sans:    "Montserrat", "Helvetica Neue", Arial, sans-serif;</div>
+--sans:  "Schibsted Grotesk", "Helvetica Neue", Arial, sans-serif;   /* everything */
+--serif: "Cormorant Garamond", "Cormorant", Georgia, serif;          /* wordmark only */
+--mono:  ui-monospace, "SF Mono", Menlo, Consolas, monospace;        /* code only */</div>
   </section>
 
   <!-- 05 COMPONENTS -->
@@ -466,7 +549,7 @@
     <div class="section-head">
       <p class="eyebrow"><span class="num">05</span>Web components</p>
       <h2>Interface elements</h2>
-      <p class="desc">Minimal, near-square corners (3&nbsp;px), hairline borders, uppercase tracked labels. Motion is subtle — a 200&nbsp;ms colour transition, nothing more.</p>
+      <p class="desc">Minimal and quiet: hairline borders, small corners (6&nbsp;px on controls, 8&nbsp;px on cards), sentence-case buttons. No shadows, no gradients. Motion is subtle: 200&nbsp;ms colour transitions and a small press, nothing more.</p>
     </div>
 
     <h3>Buttons</h3>
@@ -489,12 +572,23 @@
         <div class="caption">The separator dot is the recurring brand motif.</div>
       </div>
     </div>
+
+    <h3 style="margin-top:var(--s6);">Interaction &amp; motion</h3>
+    <ul class="rules">
+      <li>Press: buttons scale to 0.97 on <code>:active</code> over 140&nbsp;ms, so touch gets feedback the moment a finger lands.</li>
+      <li>Hover effects live inside <code>@media (hover: hover)</code>. Phones fake hover on tap and leave it stuck.</li>
+      <li>Transitions name their properties (colour, border, transform). Never <code>transition: all</code>.</li>
+      <li>Entrances: under 500&nbsp;ms, strong ease-out <code>cubic-bezier(0.23, 1, 0.32, 1)</code>, only <code>transform</code> and <code>opacity</code>. Never animate frequent actions.</li>
+      <li>Respect <code>prefers-reduced-motion</code>: drop movement, keep colour changes.</li>
+      <li>Focus: a visible 2&nbsp;px ink outline on <code>:focus-visible</code>. Never remove focus without a replacement.</li>
+    </ul>
+    <p class="caption">A ready-made implementation of these tokens and components, light and dark, lives at <a href="https://pages.lram.ch/brand.css">pages.lram.ch/brand.css</a>.</p>
   </section>
 
   <!-- 06 LAYOUT -->
   <section id="layout">
     <div class="section-head">
-      <p class="eyebrow"><span class="num">06</span>Layout &amp; spacing</p>
+      <p class="eyebrow"><span class="num">06</span>Layout, spacing &amp; mobile</p>
       <h2>Room to breathe</h2>
       <p class="desc">Whitespace is the most important element. Center hero content; left-align reading content within a ~920&nbsp;px column. Use an 8-point spacing scale so rhythm stays consistent.</p>
     </div>
@@ -505,6 +599,30 @@
       <div style="text-align:center;"><div style="width:32px;height:32px;background:var(--ink);"></div><div class="caption">32</div></div>
       <div style="text-align:center;"><div style="width:48px;height:48px;background:var(--ink);"></div><div class="caption">48</div></div>
       <div style="text-align:center;"><div style="width:64px;height:64px;background:var(--ink);"></div><div class="caption">64</div></div>
+    </div>
+
+    <h3 style="margin-top:var(--s6);">Mobile first</h3>
+    <p class="caption" style="margin-top:var(--s1);">Most people meet the brand on a phone. Design the 360&ndash;430&nbsp;px layout first, then let it open up.</p>
+    <div class="logo-row" style="margin-top:var(--s3); align-items:flex-start;">
+      <div class="phone" aria-hidden="true"><div class="scr">
+        <div class="wm">LUCA RAMSEYER</div>
+        <div class="h">Secure by design.</div>
+        <div class="p">One column, 16&nbsp;px edges, generous air. The hierarchy survives the small screen.</div>
+        <div class="b">Get in touch</div>
+        <div class="bar"></div><div class="bar s"></div>
+      </div></div>
+      <ul class="rules grow" style="margin-top:0;">
+        <li><b>One column at 360&nbsp;px.</b> Add columns with <code>min-width</code> queries or <code>repeat(auto-fit, minmax(240px, 1fr))</code>. No fixed widths.</li>
+        <li><b>The page never scrolls sideways.</b> Wide tables, code and charts scroll inside their own box.</li>
+        <li><b>16&nbsp;px side padding</b> that respects the notch: <code>viewport-fit=cover</code> plus <code>env(safe-area-inset-*)</code>.</li>
+        <li><b>Touch targets 44&times;44&nbsp;px</b> at least, with 8&nbsp;px between them.</li>
+        <li><b>Nothing only on hover.</b> Tooltips and details also open on tap.</li>
+        <li><b>Type holds up small:</b> body 16&nbsp;px, nothing under 12&nbsp;px, h1 32&ndash;40&nbsp;px on phones. Form fields at 16&nbsp;px so iOS does not zoom.</li>
+        <li><b>Never block zoom</b> (<code>user-scalable=no</code>, <code>maximum-scale=1</code>).</li>
+        <li><b>Full-height heroes use <code>100svh</code></b>, not <code>100vh</code>, so the browser bar never cuts them off.</li>
+        <li><b>Status bar:</b> one <code>theme-color</code> per colour scheme, matching the page ground.</li>
+        <li><b>Test on a real phone.</b> Desktop emulation hides sticky hover, input zoom and safe areas.</li>
+      </ul>
     </div>
   </section>
 
@@ -527,7 +645,7 @@
       <div class="id">
         <div class="n">Luca Ramseyer</div>
         <div class="t">Systems · Cybersecurity · Software</div>
-        <div class="c">luca@raml.ch · +41 77 448 25 65<br><a href="https://raml.ch">www.raml.ch</a></div>
+        <div class="c">luca@raml.ch · +41 77 448 25 65<br><a href="https://lram.ch">lram.ch</a></div>
       </div>
     </div>
 
@@ -540,7 +658,7 @@
         <p class="email-p">A short, plain-language summary of what changed, what it means, and what (if anything) you need to do.</p>
         <a class="btn btn-primary" href="#email">Read the brief</a>
       </div>
-      <div class="email-foot">Luca Ramseyer · Bern, Switzerland<br>luca@raml.ch · www.raml.ch</div>
+      <div class="email-foot">Luca Ramseyer · Bern, Switzerland<br>luca@raml.ch · lram.ch</div>
     </div>
   </section>
 
@@ -549,7 +667,7 @@
     <div class="section-head">
       <p class="eyebrow"><span class="num">08</span>Social media</p>
       <h2>Profiles &amp; posts</h2>
-      <p class="desc">Two avatar options: the Swiss-cross mark, or an “LR” monogram in Cormorant. Banners and posts keep the cream ground and lots of air. Ready-made image files are included alongside this guide.</p>
+      <p class="desc">Two avatar options: the Swiss-cross mark, or an “LR” monogram in Cormorant Garamond. Banners and posts keep the cream ground and lots of air. Ready-made image files are included alongside this guide.</p>
     </div>
 
     <div class="social-grid" style="margin-bottom:var(--s5);">
@@ -595,7 +713,7 @@
     <div class="section-head">
       <p class="eyebrow"><span class="num">09</span>Wallpapers</p>
       <h2>Desktop &amp; mobile</h2>
-      <p class="desc">Monochrome dark wallpapers with the Swiss cross and <code>raml.ch</code> lockup. Ink ground, cream mark, one hairline of accent. Files live in <code>assets/wallpapers/</code>.</p>
+      <p class="desc">Monochrome dark wallpapers with the Swiss cross and <code>raml.ch</code> lockup (the images predate the move to lram.ch). Ink ground, cream mark, one hairline of accent. Files live in <code>assets/wallpapers/</code>.</p>
     </div>
 
     <div class="social-grid">
@@ -654,9 +772,9 @@
         <p class="caption">SIL OFL 1.1 · <code>fonts/OFL-CormorantGaramond.txt</code></p>
       </div>
       <div class="panel grow">
-        <h3>Montserrat</h3>
-        <p style="font-size:14px;">© 2024 The Montserrat Project Authors — Julieta Ulanovsky et al.</p>
-        <p class="caption">SIL OFL 1.1 · <code>fonts/OFL-Montserrat.txt</code></p>
+        <h3>Schibsted Grotesk</h3>
+        <p style="font-size:14px;">© 2023 The Schibsted-Grotesk Project Authors.</p>
+        <p class="caption">SIL OFL 1.1 · <code>fonts/OFL-SchibstedGrotesk.txt</code></p>
       </div>
     </div>
 
@@ -679,7 +797,7 @@
       </div>
     </div>
 
-    <p style="font-size:13.5px; color:var(--muted);">No attribution is required for normal use. Never rename a modified font to “Cormorant” or “Montserrat”. Colours, layout, the wordmark, the cross mark, and the code are original to this brand and free to use and modify; “Pantone 485” is named only as a colour reference, independent of Pantone’s proprietary system.</p>
+    <p style="font-size:13.5px; color:var(--muted);">No attribution is required for normal use. Never rename a modified font to “Cormorant” or “Schibsted Grotesk”. Colours, layout, the wordmark, the cross mark, and the code are original to this brand and free to use and modify; “Pantone 485” is named only as a colour reference, independent of Pantone’s proprietary system.</p>
   </section>
 
 </main>
@@ -687,7 +805,7 @@
 <footer>
   <div class="wm">LUCA RAMSEYER</div>
   <div class="ft-tag">Systems<span style="color:var(--red); padding:0 .5em;">·</span>Cybersecurity<span style="color:var(--red); padding:0 .5em;">·</span>Software</div>
-  <div class="ft-meta">Brand Guidelines v1.0 · <a href="mailto:luca@raml.ch">luca@raml.ch</a> · <a href="https://raml.ch">www.raml.ch</a></div>
+  <div class="ft-meta">Brand Guidelines v2.0 · <a href="mailto:luca@raml.ch">luca@raml.ch</a> · <a href="https://lram.ch">lram.ch</a></div>
 </footer>
 
 </body>

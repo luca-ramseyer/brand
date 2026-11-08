@@ -1,6 +1,6 @@
 # Luca Ramseyer — Brand
 
-The visual identity for the Luca Ramseyer / raml.ch personal brand: systems, cybersecurity, software. Quiet, precise, Swiss restraint.
+The visual identity for the Luca Ramseyer / lram.ch personal brand: systems, cybersecurity, software. Quiet, precise, Swiss restraint.
 
 - **Humans:** open [`style-guide.html`](style-guide.html) in a browser for the full guide — colour, type, logo, components, email, social, voice.
 - **AI / coding agents:** read [`AGENTS.md`](AGENTS.md) and import the tokens. See below.
@@ -8,10 +8,10 @@ The visual identity for the Luca Ramseyer / raml.ch personal brand: systems, cyb
 ## What's here
 
 ```
-tokens.json          Single source of truth (colour, type, spacing, radius…)
+tokens.json          Single source of truth (colour, dark mode, charts, type, spacing, motion…)
 build_tokens.py      Regenerates the files below from tokens.json (no dependencies)
 tokens/
-  tokens.css         CSS custom properties — plain CSS / vanilla projects
+  tokens.css         CSS custom properties, light + dark — plain CSS / vanilla projects
   theme.css          Tailwind v4 @theme — drop into Tailwind projects
 AGENTS.md            Short, high-signal rules for coding agents
 style-guide.html     Beautiful human guide (also embeds the tokens as JSON)
@@ -33,13 +33,13 @@ fonts/               OFL licence files (+ self-hosted webfonts if you add them)
 ```css
 @import "tailwindcss";
 @import "./theme.css";
-/* utilities: bg-paper text-ink font-display text-h2 p-4 */
+/* utilities: bg-paper text-ink font-sans text-h2 p-4 (font-wordmark for the wordmark) */
 ```
 
 **With a coding agent (Claude Code, Cursor, Codex, …)**
 - Drop `AGENTS.md` + `tokens/` into the project (or add this repo as a git submodule), or
 - Add one line to the project's `AGENTS.md`:
-  `Brand: follow https://raw.githubusercontent.com/<you>/raml-brand/main/AGENTS.md — use tokens/tokens.css, never invent colours or fonts.`
+  `Brand: follow https://raw.githubusercontent.com/luca-ramseyer/brand/main/AGENTS.md — use tokens/tokens.css, never invent colours or fonts.`
 - For Claude Code specifically: keep `CLAUDE.md` thin (Claude-only config) and let `AGENTS.md` carry the shared brand rules.
 
 ## Editing
@@ -55,7 +55,7 @@ This regenerates `tokens/tokens.css`, `tokens/theme.css`, and the `:root` block 
 ## Hosting
 
 - Push this repo to GitHub (public) — it becomes the canonical, fetchable source.
-- Serve `style-guide.html` via Cloudflare Pages or GitHub Pages at e.g. `brand.raml.ch`.
+- Serve `style-guide.html` via Cloudflare Pages or GitHub Pages at e.g. `brand.lram.ch`.
 - Keep `llms.txt` at the site root so browsing agents can discover the guide.
 
 ## Licensing

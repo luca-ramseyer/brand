@@ -33,7 +33,7 @@ fonts/               OFL licence files (+ self-hosted webfonts if you add them)
 ```css
 @import "tailwindcss";
 @import "./theme.css";
-/* utilities: bg-paper text-ink font-display text-h2 p-4 */
+/* utilities: bg-paper text-ink font-sans text-h2 p-4 (font-wordmark for the wordmark) */
 ```
 
 **With a coding agent (Claude Code, Cursor, Codex, …)**

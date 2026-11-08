@@ -1,10 +1,10 @@
-# Luca Ramseyer — Brand Guidelines (v1.1)
+# Luca Ramseyer — Brand Guidelines (v2.0)
 
-Systems · Cybersecurity · Software. A quiet, precise identity built on Swiss restraint: generous whitespace, a refined serif wordmark, one calm accent. When in doubt, remove something.
+Systems · Cybersecurity · Software. A quiet, precise identity built on Swiss restraint: generous whitespace, a clean modern grotesk, a refined serif wordmark, one calm accent. When in doubt, remove something.
 
 ## 1. Wordmark & logo
 
-- Primary logo: the name in **Cormorant Garamond Medium**, all caps, letter-spacing `0.24em`, with the tagline beneath in **Montserrat**.
+- Primary logo: the name in **Cormorant Garamond Medium**, all caps, letter-spacing `0.24em`, with the tagline beneath in **Schibsted Grotesk**.
 - Tracking is part of the identity — never tighten it.
 - Reversed lockup (paper text on ink) is allowed; the separator dots turn red.
 - Clear space: keep the cap-height of the "L" clear on all sides. Minimum width ~32 mm print / ~180 px screen.
@@ -41,21 +41,21 @@ Usage balance: paper dominates (~70%), ink for type (~20%), muted small (~5%), r
 
 ## 4. Typography
 
-- **Display:** Cormorant Garamond — 400 / 500 / 600 / italic. Headlines, wordmark (tracked, uppercase), pull quotes.
-- **Text & UI:** Montserrat — 300 / 400 / 500 / 600. Body (400), labels & buttons (500, uppercase, tracked `0.14em`).
+- **Schibsted Grotesk** (400 / 500 / 600) does all the work: headlines, body, labels, buttons, data. Headlines medium 500, tracked `-0.02em` (display `-0.03em`), sentence case. Tabular figures for numbers.
+- **Cormorant Garamond** Medium is the signature only: the wordmark and the LR monogram. Never headings or body.
 - Don't introduce a third family. Code may use the system monospace stack (`--mono`).
 
-Type scale (px): display 56 · h1 40 · h2 30 · h3 21 · body 16 · small 13 · eyebrow 12.
-Line-height: body 1.75, headings 1.15. Eyebrows: uppercase, tracked `0.22em`.
+Type scale (px): display 56 · h1 44 · h2 28 · h3 19 (600) · body 16 · small 13 · label 12.
+Line-height: body 1.6, headings 1.1. Labels/eyebrows: 12px, 500, uppercase, tracked `0.08em`; use sparingly. Buttons are sentence case, not uppercase.
 
 Webfonts:
 ```html
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500&family=Schibsted+Grotesk:wght@400;500;600&display=swap" rel="stylesheet">
 ```
 
 ## 5. Web components
 
-- Buttons: near-square (3px radius), uppercase tracked labels. Primary = ink fill / paper text; ghost = ink outline; accent = red (rare).
+- Buttons: 6px corners, sentence-case 14px medium labels. Primary = ink fill / paper text; ghost = ink outline; accent = red (rare). Cards and panels: 8px corners, hairline border, no shadow.
 - Inputs: surface fill, hairline border, border turns ink on focus. Font size 16px so iOS does not zoom.
 - Links: ink with a hairline underline, red on hover.
 - Divider: hairline rules with a red middot — the recurring brand motif.
@@ -84,14 +84,14 @@ Whitespace is the most important element. Centre hero content; left-align readin
 
 ## 7. Email
 
-- Signature: small mark, hairline divider, name in Cormorant, role in tracked Montserrat, contact lines in Montserrat.
+- Signature: small mark, hairline divider, name and role in Schibsted Grotesk, contact lines below.
 - Template: white or cream ground, wordmark, one accent button, thin footer rule. Text-first.
 
 ## 8. Social media
 
 - Avatar: the Swiss-cross mark, or an "LR" monogram in Cormorant. (Files in `assets/`.)
 - Banner: wordmark + tagline centred on cream. Sizes supplied: 1500×500 (X), 1584×396 (LinkedIn).
-- Posts: cream ground, lots of air, Cormorant headline, small mark top-left.
+- Posts: cream ground, lots of air, Schibsted Grotesk medium headline, small mark top-left.
 
 ## 9. Voice & tone
 
@@ -102,9 +102,9 @@ Calm, precise, expert. Do: lead with what changed and what it means; plain verbs
 Both typefaces are licensed under the **SIL Open Font License 1.1** — free for personal and commercial use, including embedding and modification.
 
 - **Cormorant Garamond** — © 2015 The Cormorant Project Authors (Christian Thalmann / Catharsis Fonts). License: `fonts/OFL-CormorantGaramond.txt`.
-- **Montserrat** — © 2024 The Montserrat Project Authors (Julieta Ulanovsky et al.). License: `fonts/OFL-Montserrat.txt`.
+- **Schibsted Grotesk** — © 2023 The Schibsted-Grotesk Project Authors. License: `fonts/OFL-SchibstedGrotesk.txt`.
 
-**When to ship the OFL file:** only when you redistribute the font *files* themselves — self-hosting webfonts or bundling them into an app. Keep the matching `OFL-*.txt` beside the fonts, and never rename a modified font to "Cormorant" or "Montserrat".
+**When to ship the OFL file:** only when you redistribute the font *files* themselves — self-hosting webfonts or bundling them into an app. Keep the matching `OFL-*.txt` beside the fonts, and never rename a modified font to "Cormorant" or "Schibsted Grotesk".
 
 **When you don't need it:** Google Fonts CDN usage, and any document or export made with the fonts (PDF, PNG, SVG, the printed card). No attribution is required for normal use.
 

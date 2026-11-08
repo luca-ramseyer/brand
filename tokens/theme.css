@@ -10,8 +10,8 @@
   --color-red-deep: #A63B30;
   --color-line: #DAD2C4;
   --color-good: #5B7A52;
-  --font-display: 'Cormorant Garamond', 'Cormorant', Georgia, 'Times New Roman', serif;
-  --font-sans: 'Montserrat', 'Helvetica Neue', Arial, sans-serif;
+  --font-wordmark: 'Cormorant Garamond', 'Cormorant', Georgia, 'Times New Roman', serif;
+  --font-sans: 'Schibsted Grotesk', 'Helvetica Neue', Arial, sans-serif;
   --font-mono: ui-monospace, 'SF Mono', Menlo, Consolas, monospace;
   --color-chart-1: #211F1C;
   --color-chart-2: #C0473A;
@@ -19,12 +19,12 @@
   --color-chart-4: #5B7A52;
   --color-chart-5: #C9BFAE;
   --text-display: 56px;
-  --text-h1: 40px;
-  --text-h2: 30px;
-  --text-h3: 21px;
+  --text-h1: 44px;
+  --text-h2: 28px;
+  --text-h3: 19px;
   --text-body: 16px;
   --text-small: 13px;
-  --text-eyebrow: 12px;
+  --text-label: 12px;
   --spacing-1: 8px;
   --spacing-2: 16px;
   --spacing-3: 24px;
@@ -32,7 +32,8 @@
   --spacing-5: 48px;
   --spacing-6: 64px;
   --spacing-7: 96px;
-  --radius-ui: 3px;
+  --radius-ui: 6px;
+  --radius-card: 8px;
   --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
 }
 @media (prefers-color-scheme: dark) {

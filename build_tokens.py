@@ -29,9 +29,12 @@ def css_vars():
         L.append((f"--tracking-{k}", v))
     for k, v in T["leading"].items():
         L.append((f"--leading-{k}", str(v)))
+    for k, v in T["weight"].items():
+        L.append((f"--weight-{k}", str(v)))
     for i, px in enumerate(T["space"], start=1):
         L.append((f"--s{i}", f"{px}px"))
     L.append(("--radius-ui", T["radius"]["ui"]))
+    L.append(("--radius-card", T["radius"]["card"]))
     L.append(("--motion-fast", T["motion"]["fast"]))
     L.append(("--motion-press", T["motion"]["press"]))
     L.append(("--motion-enter", T["motion"]["enter"]))
@@ -68,7 +71,7 @@ def write_theme_css():
              "@theme {"]
     for k, v in T["color"].items():
         lines.append(f"  --color-{k}: {v['hex']};")
-    lines.append(f"  --font-display: {T['font']['serif']};")
+    lines.append(f"  --font-wordmark: {T['font']['serif']};")
     lines.append(f"  --font-sans: {T['font']['sans']};")
     lines.append(f"  --font-mono: {T['font']['mono']};")
     for i, hexv in enumerate(T["chart"]["light"], start=1):
@@ -78,6 +81,7 @@ def write_theme_css():
     for i, px in enumerate(T["space"], start=1):
         lines.append(f"  --spacing-{i}: {px}px;")
     lines.append(f"  --radius-ui: {T['radius']['ui']};")
+    lines.append(f"  --radius-card: {T['radius']['card']};")
     lines.append(f"  --ease-out: {T['motion']['easeOut']};")
     lines.append("}")
     lines += dark_block("--color-")

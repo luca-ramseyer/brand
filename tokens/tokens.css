@@ -4,12 +4,20 @@
   --surface: #FBF8F1;
   --ink: #211F1C;
   --body: #423D37;
-  --muted: #857E72;
+  --muted: #6F685D;
+  --stone: #857E72;
   --red: #C0473A;
   --red-deep: #A63B30;
   --line: #DAD2C4;
+  --good: #5B7A52;
   --serif: 'Cormorant Garamond', 'Cormorant', Georgia, 'Times New Roman', serif;
   --sans: 'Montserrat', 'Helvetica Neue', Arial, sans-serif;
+  --mono: ui-monospace, 'SF Mono', Menlo, Consolas, monospace;
+  --chart-1: #211F1C;
+  --chart-2: #C0473A;
+  --chart-3: #857E72;
+  --chart-4: #5B7A52;
+  --chart-5: #C9BFAE;
   --text-display: 56px;
   --text-h1: 40px;
   --text-h2: 30px;
@@ -31,5 +39,28 @@
   --s7: 96px;
   --radius-ui: 3px;
   --motion-fast: 200ms;
+  --motion-press: 140ms;
+  --motion-enter: 500ms;
+  --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+  --press-scale: 0.97;
   --maxw: 920px;
+}
+/* Dark theme: drop this block if a surface must stay light (print, the style guide). */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --paper: #1C1A18;
+    --surface: #24221F;
+    --ink: #F4EFE4;
+    --body: #CFC8BB;
+    --muted: #A39B8E;
+    --red: #DB6B5D;
+    --red-deep: #E58478;
+    --line: #36332E;
+    --good: #8FAE85;
+    --chart-1: #F4EFE4;
+    --chart-2: #DB6B5D;
+    --chart-3: #A39B8E;
+    --chart-4: #8FAE85;
+    --chart-5: #5A554D;
+  }
 }

@@ -8,10 +8,10 @@ The visual identity for the Luca Ramseyer / raml.ch personal brand: systems, cyb
 ## What's here
 
 ```
-tokens.json          Single source of truth (colour, type, spacing, radius…)
+tokens.json          Single source of truth (colour, dark mode, charts, type, spacing, motion…)
 build_tokens.py      Regenerates the files below from tokens.json (no dependencies)
 tokens/
-  tokens.css         CSS custom properties — plain CSS / vanilla projects
+  tokens.css         CSS custom properties, light + dark — plain CSS / vanilla projects
   theme.css          Tailwind v4 @theme — drop into Tailwind projects
 AGENTS.md            Short, high-signal rules for coding agents
 style-guide.html     Beautiful human guide (also embeds the tokens as JSON)

@@ -1,8 +1,10 @@
 # Luca Ramseyer — Brand
 
-> Visual identity and design system for the Luca Ramseyer / raml.ch personal brand (systems, cybersecurity, software). Quiet, precise, Swiss restraint: paper-and-ink palette, Cormorant Garamond + Montserrat, one muted-red accent used sparingly.
+> Visual identity and design system for the Luca Ramseyer / raml.ch personal brand (systems, cybersecurity, software). Quiet, precise, Swiss restraint: paper-and-ink palette with a dark mode, Cormorant Garamond + Montserrat, one muted-red accent used sparingly. Mobile first.
 
-When designing or coding anything for this brand, use the tokens verbatim and follow the rules. Never invent colours or fonts; red is an accent only; keep the wordmark's wide letter-spacing.
+When designing or coding anything for this brand, use the tokens verbatim and follow the rules. Never invent colours or fonts; red is an accent only; keep the wordmark's wide letter-spacing; design for phones first.
+
+- [Ready-made CSS](https://pages.lram.ch/brand.css): tokens (light + dark) and components in one stylesheet.
 
 ## Core
 - [Agent rules](AGENTS.md): authoritative, concise instructions for coding agents.

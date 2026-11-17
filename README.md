@@ -1,6 +1,6 @@
 # Luca Ramseyer — Brand
 
-The visual identity for the Luca Ramseyer / lram.ch personal brand: systems, cybersecurity, software. Quiet, precise, Swiss restraint.
+The visual identity for the Luca Ramseyer / lram.ch personal brand: systems, cybersecurity, software. Quiet, precise, Swiss restraint, in soft clay (v3.0): surfaces rise and press like clay, lit from the top left.
 
 - **Humans:** open [`style-guide.html`](style-guide.html) in a browser for the full guide — colour, type, logo, components, email, social, voice.
 - **AI / coding agents:** read [`AGENTS.md`](AGENTS.md) and import the tokens. See below.

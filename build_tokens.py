@@ -35,6 +35,10 @@ def css_vars():
         L.append((f"--s{i}", f"{px}px"))
     L.append(("--radius-ui", T["radius"]["ui"]))
     L.append(("--radius-card", T["radius"]["card"]))
+    L.append(("--radius-panel", T["radius"]["panel"]))
+    L.append(("--radius-pill", T["radius"]["pill"]))
+    L += clay_vars("light")
+    L += elevation_vars()
     L.append(("--motion-fast", T["motion"]["fast"]))
     L.append(("--motion-press", T["motion"]["press"]))
     L.append(("--motion-enter", T["motion"]["enter"]))
@@ -43,10 +47,17 @@ def css_vars():
     L.append(("--maxw", T["layout"]["maxWidth"]))
     return L
 
+def clay_vars(theme):
+    return [(f"--clay-{k}", v) for k, v in T["clay"][theme].items()]
+
+def elevation_vars(prefix="--"):
+    return [(f"{prefix}{k}", v) for k, v in T["elevation"].items() if not k.startswith("$")]
+
 def dark_vars(prefix="--"):
     L = [(f"{prefix}{k}", v) for k, v in T["dark"].items() if not k.startswith("$")]
     chart_prefix = "--color-chart-" if prefix == "--color-" else "--chart-"
     L += [(f"{chart_prefix}{i}", v) for i, v in enumerate(T["chart"]["dark"], start=1)]
+    L += clay_vars("dark")
     return L
 
 def dark_block(prefix="--"):
@@ -66,7 +77,7 @@ def write_tokens_css():
     open(os.path.join(ROOT, "tokens", "tokens.css"), "w").write("\n".join(lines) + "\n")
 
 def write_theme_css():
-    """Tailwind v4 @theme — utilities like bg-paper, text-ink, font-display, text-h2, p-4."""
+    """Tailwind v4 @theme — utilities like bg-paper, text-ink, shadow-raise-2, rounded-card, p-4."""
     lines = ["/* Tailwind v4 theme — generated from tokens.json. Import after `@import \"tailwindcss\";` */",
              "@theme {"]
     for k, v in T["color"].items():
@@ -82,6 +93,10 @@ def write_theme_css():
         lines.append(f"  --spacing-{i}: {px}px;")
     lines.append(f"  --radius-ui: {T['radius']['ui']};")
     lines.append(f"  --radius-card: {T['radius']['card']};")
+    lines.append(f"  --radius-panel: {T['radius']['panel']};")
+    lines.append(f"  --radius-pill: {T['radius']['pill']};")
+    lines += [f"  {n}: {v};" for n, v in clay_vars("light")]
+    lines += [f"  {n}: {v};" for n, v in elevation_vars("--shadow-")]
     lines.append(f"  --ease-out: {T['motion']['easeOut']};")
     lines.append("}")
     lines += dark_block("--color-")

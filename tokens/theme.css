@@ -10,6 +10,7 @@
   --color-red-deep: #A63B30;
   --color-line: #DAD2C4;
   --color-good: #5B7A52;
+  --color-well: #ECE5D8;
   --font-wordmark: 'Cormorant Garamond', 'Cormorant', Georgia, 'Times New Roman', serif;
   --font-sans: 'Schibsted Grotesk', 'Helvetica Neue', Arial, sans-serif;
   --font-mono: ui-monospace, 'SF Mono', Menlo, Consolas, monospace;
@@ -32,8 +33,20 @@
   --spacing-5: 48px;
   --spacing-6: 64px;
   --spacing-7: 96px;
-  --radius-ui: 6px;
-  --radius-card: 8px;
+  --radius-ui: 14px;
+  --radius-card: 24px;
+  --radius-panel: 32px;
+  --radius-pill: 999px;
+  --clay-hi: rgb(255 253 248 / 0.9);
+  --clay-lo: rgb(110 92 64 / 0.24);
+  --clay-rim: rgb(255 255 255 / 0.75);
+  --clay-shade: rgb(110 92 64 / 0.09);
+  --shadow-raise-1: -3px -3px 8px var(--clay-hi), 4px 5px 12px var(--clay-lo);
+  --shadow-raise-2: -8px -8px 20px var(--clay-hi), 10px 12px 28px var(--clay-lo);
+  --shadow-raise-3: -14px -14px 36px var(--clay-hi), 20px 26px 56px var(--clay-lo);
+  --shadow-press: inset 3px 4px 8px var(--clay-lo), inset -3px -3px 8px var(--clay-hi);
+  --shadow-clay-body: inset 2px 2px 1px var(--clay-rim), inset -6px -8px 16px var(--clay-shade);
+  --shadow-sheen: inset 2px 3px 3px rgb(255 255 255 / 0.22), inset -4px -6px 10px rgb(0 0 0 / 0.25);
   --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
 }
 @media (prefers-color-scheme: dark) {
@@ -47,10 +60,15 @@
     --color-red-deep: #E58478;
     --color-line: #36332E;
     --color-good: #8FAE85;
+    --color-well: #161412;
     --color-chart-1: #F4EFE4;
     --color-chart-2: #DB6B5D;
     --color-chart-3: #A39B8E;
     --color-chart-4: #8FAE85;
     --color-chart-5: #5A554D;
+    --clay-hi: rgb(255 238 214 / 0.05);
+    --clay-lo: rgb(0 0 0 / 0.55);
+    --clay-rim: rgb(255 244 228 / 0.07);
+    --clay-shade: rgb(0 0 0 / 0.28);
   }
 }

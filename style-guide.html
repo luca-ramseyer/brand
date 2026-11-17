@@ -2,11 +2,14 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Luca Ramseyer — Brand Guidelines</title>
+<meta name="description" content="Brand guidelines v3.0 for Luca Ramseyer: soft clay depth on paper and ink, Schibsted Grotesk, one Swiss red accent.">
+<meta name="theme-color" content="#F4EFE4">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500&family=Schibsted+Grotesk:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
   :root{
     /* TOKENS:START — generated from tokens.json by build_tokens.py. Do not edit by hand. */
@@ -14,24 +17,37 @@
     --surface:#FBF8F1;
     --ink:#211F1C;
     --body:#423D37;
-    --muted:#857E72;
+    --muted:#6F685D;
+    --stone:#857E72;
     --red:#C0473A;
     --red-deep:#A63B30;
     --line:#DAD2C4;
+    --good:#5B7A52;
+    --well:#ECE5D8;
     --serif:'Cormorant Garamond', 'Cormorant', Georgia, 'Times New Roman', serif;
-    --sans:'Montserrat', 'Helvetica Neue', Arial, sans-serif;
+    --sans:'Schibsted Grotesk', 'Helvetica Neue', Arial, sans-serif;
+    --mono:ui-monospace, 'SF Mono', Menlo, Consolas, monospace;
+    --chart-1:#211F1C;
+    --chart-2:#C0473A;
+    --chart-3:#857E72;
+    --chart-4:#5B7A52;
+    --chart-5:#C9BFAE;
     --text-display:56px;
-    --text-h1:40px;
-    --text-h2:30px;
-    --text-h3:21px;
+    --text-h1:44px;
+    --text-h2:28px;
+    --text-h3:19px;
     --text-body:16px;
     --text-small:13px;
-    --text-eyebrow:12px;
+    --text-label:12px;
     --tracking-wordmark:0.24em;
-    --tracking-label:0.14em;
-    --tracking-eyebrow:0.22em;
-    --leading-body:1.75;
-    --leading-tight:1.15;
+    --tracking-display:-0.03em;
+    --tracking-heading:-0.02em;
+    --tracking-label:0.08em;
+    --leading-body:1.6;
+    --leading-tight:1.1;
+    --weight-body:400;
+    --weight-heading:500;
+    --weight-strong:600;
     --s1:8px;
     --s2:16px;
     --s3:24px;
@@ -39,234 +55,315 @@
     --s5:48px;
     --s6:64px;
     --s7:96px;
-    --radius-ui:3px;
+    --radius-ui:14px;
+    --radius-card:24px;
+    --radius-panel:32px;
+    --radius-pill:999px;
+    --clay-hi:rgb(255 253 248 / 0.9);
+    --clay-lo:rgb(110 92 64 / 0.24);
+    --clay-rim:rgb(255 255 255 / 0.75);
+    --clay-shade:rgb(110 92 64 / 0.09);
+    --raise-1:-3px -3px 8px var(--clay-hi), 4px 5px 12px var(--clay-lo);
+    --raise-2:-8px -8px 20px var(--clay-hi), 10px 12px 28px var(--clay-lo);
+    --raise-3:-14px -14px 36px var(--clay-hi), 20px 26px 56px var(--clay-lo);
+    --press:inset 3px 4px 8px var(--clay-lo), inset -3px -3px 8px var(--clay-hi);
+    --clay-body:inset 2px 2px 1px var(--clay-rim), inset -6px -8px 16px var(--clay-shade);
+    --sheen:inset 2px 3px 3px rgb(255 255 255 / 0.22), inset -4px -6px 10px rgb(0 0 0 / 0.25);
     --motion-fast:200ms;
+    --motion-press:140ms;
+    --motion-enter:500ms;
+    --ease-out:cubic-bezier(0.23, 1, 0.32, 1);
+    --press-scale:0.98;
     --maxw:920px;
     /* TOKENS:END */
   }
 
-  *{box-sizing:border-box;}
-  html{ -webkit-text-size-adjust:100%; }
+  /* The guide stays light so colour samples read true; the dark theme is shown in its own panel. */
+  *{ box-sizing:border-box; }
+  html{ -webkit-text-size-adjust:100%; -webkit-tap-highlight-color:transparent; }
   body{
     margin:0; background:var(--paper); color:var(--body);
-    font-family:var(--sans); font-weight:400; font-size:16px; line-height:1.75;
+    font:400 16px/1.6 var(--sans);
     -webkit-font-smoothing:antialiased; text-rendering:optimizeLegibility;
   }
   .wrap{ max-width:var(--maxw); margin:0 auto; padding:0 var(--s4); }
+  code{ font-family:var(--mono); font-size:.86em; background:var(--well); border-radius:6px; padding:1px 6px; }
 
-  /* ---------- type primitives ---------- */
-  .eyebrow{
-    font-family:var(--sans); font-weight:500; font-size:11.5px;
-    letter-spacing:.22em; text-transform:uppercase; color:var(--muted);
-    margin:0 0 var(--s2);
+  /* ---------- type ---------- */
+  .eyebrow{ font:500 12px/1.4 var(--sans); letter-spacing:.08em; text-transform:uppercase; color:var(--muted); margin:0 0 var(--s2); }
+  .eyebrow .num{ color:var(--red); margin-right:.6em; font-variant-numeric:tabular-nums; }
+  h1,h2,h3{ font-family:var(--sans); color:var(--ink); font-weight:500; margin:0; letter-spacing:-.02em; line-height:1.1; text-wrap:balance; }
+  h2{ font-size:clamp(26px,4vw,34px); }
+  h3{ font-size:19px; font-weight:600; letter-spacing:-.01em; margin:0 0 var(--s2); }
+  p{ margin:0 0 var(--s2); max-width:64ch; text-wrap:pretty; }
+  .lead{ font-size:18px; }
+  .note{ font-size:14px; color:var(--muted); }
+  a{ color:var(--ink); text-decoration:none; border-bottom:1px solid var(--line); transition:color 200ms, border-color 200ms; }
+  @media (hover:hover){ a:hover{ color:var(--red); border-color:var(--red); } }
+  :focus-visible{ outline:2px solid var(--ink); outline-offset:3px; }
+  .sep{ color:var(--red); padding:0 .55em; }
+
+  /* ---------- clay primitives (mirror pages.lram.ch/brand.css) ---------- */
+  .card{ background:var(--surface); border-radius:var(--radius-card); padding:var(--s4); box-shadow:var(--clay-body), var(--raise-2); }
+  .well{ background:var(--well); border-radius:var(--radius-card); padding:var(--s3); box-shadow:var(--press); }
+  .btn{
+    display:inline-flex; align-items:center; justify-content:center; gap:.5em;
+    min-height:48px; padding:0 22px; border:0; border-radius:var(--radius-ui);
+    font:500 15px/1 var(--sans); color:var(--ink); background:var(--surface); cursor:pointer;
+    box-shadow:var(--clay-body), var(--raise-1);
+    transition:box-shadow var(--motion-press) var(--ease-out), transform var(--motion-press) var(--ease-out), background-color 200ms;
+    touch-action:manipulation; user-select:none; -webkit-user-select:none;
   }
-  .eyebrow .num{ color:var(--red); margin-right:.5em; }
-  h1,h2,h3{ font-family:var(--serif); color:var(--ink); font-weight:500; margin:0; }
-  h2{ font-size:clamp(26px,4vw,34px); letter-spacing:.01em; line-height:1.15; }
-  h3{ font-size:21px; font-weight:600; margin:0 0 var(--s1); letter-spacing:.01em; }
-  p{ margin:0 0 var(--s2); max-width:64ch; }
-  .lead{ font-size:18px; color:var(--body); }
-  a{ color:var(--ink); text-decoration:none; border-bottom:1px solid var(--line); transition:border-color .2s, color .2s; }
-  a:hover{ color:var(--red); border-color:var(--red); }
-  .dot{ color:var(--red); padding:0 .45em; }
+  .btn, .btn:hover{ border-bottom:0; }
+  .btn:active{ box-shadow:var(--press); transform:scale(var(--press-scale)); }
+  .btn-primary{ background:var(--ink); color:var(--paper); box-shadow:var(--sheen), var(--raise-1); }
+  .btn-accent{ background:var(--red); color:#fff; box-shadow:var(--sheen), var(--raise-1); }
+  @media (hover:hover){
+    .btn:hover{ color:var(--ink); }
+    .btn-primary:hover{ color:var(--paper); background:var(--body); }
+    .btn-accent:hover{ color:#fff; background:var(--red-deep); }
+  }
+  .btn-primary:active,.btn-accent:active{ box-shadow:var(--sheen), inset 3px 4px 8px rgb(0 0 0 / .3); }
+  .field{
+    display:block; width:100%; max-width:360px; min-height:48px; padding:0 16px;
+    font:400 16px/1 var(--sans); color:var(--ink); background:var(--well);
+    border:1px solid var(--line); border-radius:var(--radius-ui); box-shadow:var(--press);
+  }
+  .field::placeholder{ color:var(--muted); }
+  .field:focus-visible{ outline:2px solid var(--ink); outline-offset:2px; }
+  .label{ display:block; font:500 14px/1.4 var(--sans); color:var(--ink); margin-bottom:var(--s1); }
+  .chip{ display:inline-flex; align-items:center; min-height:32px; padding:0 14px; border-radius:var(--radius-pill); background:var(--surface); font-size:13px; color:var(--body); box-shadow:var(--clay-body), var(--raise-1); }
+  /* Segmented track: the active item rises out of a pressed groove. The signature. */
+  .seg{ display:inline-flex; gap:4px; padding:6px; border-radius:20px; background:var(--well); box-shadow:var(--press); }
+  .seg a{ display:inline-flex; align-items:center; min-height:40px; padding:0 16px; border:0; border-radius:var(--radius-ui); font-size:14px; font-weight:500; color:var(--muted); transition:color 200ms, background-color 200ms, box-shadow var(--motion-press) var(--ease-out); }
+  .seg a[aria-current]{ background:var(--surface); color:var(--ink); box-shadow:var(--clay-body), var(--raise-1); }
+  @media (hover:hover){ .seg a:hover{ color:var(--ink); } }
+  .switch{ position:relative; display:inline-flex; align-items:center; gap:var(--s2); cursor:pointer; font-size:15px; color:var(--ink); }
+  .switch input{ position:absolute; opacity:0; width:1px; height:1px; }
+  .switch .track{ width:56px; height:32px; border-radius:var(--radius-pill); background:var(--well); box-shadow:var(--press); position:relative; transition:background-color 200ms; }
+  .switch .track::after{ content:""; position:absolute; top:4px; left:4px; width:24px; height:24px; border-radius:50%; background:var(--surface); box-shadow:var(--clay-body), var(--raise-1); transition:transform var(--motion-fast) var(--ease-out); }
+  .switch input:checked + .track{ background:var(--red); box-shadow:var(--sheen); }
+  .switch input:checked + .track::after{ transform:translateX(24px); }
+  .switch input:focus-visible + .track{ outline:2px solid var(--ink); outline-offset:3px; }
+
+  /* The clay mark: same geometry as the flat mark, pressed out of red clay. 64px and up only. */
+  .clay-mark{ --size:120px; width:var(--size); height:var(--size); flex:none; border-radius:10%; background:var(--red); color:var(--paper); box-shadow:var(--sheen), var(--raise-3); }
+  .clay-mark svg{ display:block; width:100%; height:100%; }
 
   /* ---------- hero ---------- */
-  .hero{
-    min-height:88vh; display:flex; flex-direction:column; align-items:center;
-    justify-content:center; text-align:center; padding:var(--s7) var(--s4);
-    border-bottom:1px solid var(--line);
-  }
-  .hero .wordmark{
-    font-family:var(--serif); font-weight:500; color:var(--ink);
-    font-size:clamp(34px,7vw,64px); letter-spacing:.24em;
-    text-indent:.24em; /* balance the tracking */
-    margin:0;
-  }
-  .hero .tagline{
-    font-family:var(--sans); font-weight:400; color:var(--body);
-    font-size:clamp(11px,1.6vw,15px); letter-spacing:.18em; text-transform:none;
-    margin-top:var(--s3);
-  }
-  .hero .tagline .sep{ color:var(--red); padding:0 .6em; }
-  .hero .rule{ width:54px; height:1px; background:var(--line); margin:var(--s5) 0 var(--s4); }
-  .hero .docline{
-    font-family:var(--sans); font-weight:500; letter-spacing:.22em;
-    text-transform:uppercase; font-size:11.5px; color:var(--muted);
-  }
-  .hero .meta{ margin-top:var(--s2); font-size:13px; color:var(--muted); letter-spacing:.04em; }
-  .fade{ opacity:0; transform:translateY(10px); animation:rise .9s ease forwards; }
-  .fade.d1{ animation-delay:.05s;} .fade.d2{ animation-delay:.22s;} .fade.d3{ animation-delay:.4s;} .fade.d4{ animation-delay:.56s;}
-  @keyframes rise{ to{opacity:1; transform:none;} }
-  @media (prefers-reduced-motion:reduce){ .fade{ animation:none; opacity:1; transform:none; } }
+  .hero{ min-height:92svh; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; padding:var(--s7) var(--s4); }
+  .hero .clay-mark{ --size:clamp(104px,16vw,148px); margin-bottom:var(--s6); }
+  .wordmark{ font-family:var(--serif); font-weight:500; color:var(--ink); letter-spacing:.24em; text-indent:.24em; margin:0; }
+  .hero .wordmark{ font-size:clamp(30px,7vw,60px); line-height:1.1; }
+  .hero .tagline{ font-size:clamp(12px,1.6vw,15px); letter-spacing:.18em; color:var(--body); margin-top:var(--s3); }
+  .hero .docline{ display:inline-flex; flex-wrap:wrap; justify-content:center; gap:var(--s1); margin-top:var(--s5); }
+  .fade{ opacity:0; transform:translateY(8px); animation:rise var(--motion-enter) var(--ease-out) forwards; }
+  .fade.d2{ animation-delay:.08s; } .fade.d3{ animation-delay:.16s; } .fade.d4{ animation-delay:.24s; }
+  @keyframes rise{ to{ opacity:1; transform:none; } }
 
   /* ---------- sections ---------- */
-  section{ padding:var(--s7) 0; border-bottom:1px solid var(--line); }
+  section{ padding:var(--s7) 0; scroll-margin-top:var(--s4); }
   .section-head{ margin-bottom:var(--s5); }
   .section-head h2{ margin-top:var(--s1); }
-  .section-head .desc{ margin-top:var(--s2); color:var(--body); }
+  .section-head .desc{ margin-top:var(--s2); }
+  .grid{ display:grid; gap:var(--s4); grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); }
+  .center{ display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; }
+  .caption{ font-size:13px; color:var(--muted); margin-top:var(--s3); }
+  .mt5{ margin-top:var(--s5); } .mt6{ margin-top:var(--s6); }
 
   /* ---------- contents ---------- */
-  .toc{ display:grid; grid-template-columns:repeat(2,1fr); gap:var(--s1) var(--s5); margin-top:var(--s3);}
-  .toc a{ border:0; display:flex; align-items:baseline; gap:.7em; font-size:15px; color:var(--body); padding:6px 0; }
-  .toc a:hover{ color:var(--red); }
-  .toc .n{ font-family:var(--serif); font-size:18px; color:var(--red); min-width:1.4em; }
+  .toc{ display:grid; grid-template-columns:repeat(2,1fr); gap:4px var(--s5); margin-top:var(--s4); }
+  .toc a{ border:0; display:flex; align-items:baseline; gap:var(--s2); min-height:40px; padding:8px 0; font-size:15px; color:var(--body); }
+  @media (hover:hover){ .toc a:hover{ color:var(--red); } }
+  .toc .n{ font-size:13px; font-variant-numeric:tabular-nums; color:var(--red); min-width:1.8em; }
 
-  /* ---------- marks / logo ---------- */
-  .mark-svg{ display:block; }
-  .logo-row{ display:flex; flex-wrap:wrap; gap:var(--s4); align-items:stretch; }
-  .panel{
-    background:var(--surface); border:1px solid var(--line); border-radius:3px;
-    padding:var(--s5) var(--s4);
-  }
-  .panel.center{ text-align:center; display:flex; flex-direction:column; align-items:center; justify-content:center; }
-  .grow{ flex:1 1 280px; }
-  .wm{ font-family:var(--serif); font-weight:500; color:var(--ink); letter-spacing:.24em; text-indent:.24em; }
-  .wm.lg{ font-size:30px; } .wm.md{ font-size:22px; } .wm.sm{ font-size:15px; }
-  .wm-tag{ font-family:var(--sans); font-size:11px; letter-spacing:.16em; color:var(--body); margin-top:14px; }
-  .wm-tag .sep{ color:var(--red); padding:0 .5em; }
-  .caption{ font-size:12.5px; color:var(--muted); margin-top:var(--s3); letter-spacing:.02em; }
-
-  .lockups{ display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:var(--s3); }
-
-  /* clear space diagram */
-  .clearspace{ position:relative; display:inline-block; padding:46px; }
-  .clearspace::before{ content:""; position:absolute; inset:0; border:1px dashed var(--red); opacity:.5; }
-
-  /* do / don't */
-  .dd{ display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:var(--s3); margin-top:var(--s2);}
-  .dd .item{ background:var(--surface); border:1px solid var(--line); border-radius:3px; padding:var(--s4) var(--s3); text-align:center; min-height:150px; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:6px; }
-  .dd .tag{ font-family:var(--sans); font-size:11px; letter-spacing:.14em; text-transform:uppercase; margin-top:8px; }
-  .dd .yes .tag{ color:#5b7a52; } .dd .no .tag{ color:var(--red); }
-  .dd .yes{ border-color:#cdd6c4; } 
-  .badwm{ font-family:var(--serif); font-weight:500; color:var(--ink); font-size:18px; }
+  /* ---------- logo ---------- */
+  .wm-lg{ font-size:28px; } .wm-md{ font-size:21px; } .wm-sm{ font-size:15px; }
+  .wm-tag{ font-size:11px; letter-spacing:.16em; color:var(--body); margin-top:14px; }
+  .on-ink{ background:var(--ink); --clay-rim:rgb(255 244 228 / .07); --clay-shade:rgb(0 0 0 / .28); }
+  .on-ink > *{ --clay-hi:rgb(255 238 214 / .05); --clay-lo:rgb(0 0 0 / .55); }
+  .on-ink .wordmark{ color:var(--paper); } .on-ink .wm-tag{ color:#CFC8BB; } .on-ink .caption{ color:#A39B8E; }
+  .clearspace{ position:relative; display:inline-block; padding:40px; }
+  .clearspace::before{ content:""; position:absolute; inset:0; border:1px dashed var(--red); border-radius:var(--radius-ui); opacity:.5; }
+  .dd{ display:grid; gap:var(--s3); grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); }
+  .dd .card{ min-height:152px; padding:var(--s3); }
+  .dd .tag{ font-size:13px; margin-top:var(--s2); color:var(--muted); }
+  .dd .yes .tag b{ color:var(--good); } .dd .no .tag b{ color:var(--red); }
+  .badwm{ font-family:var(--serif); font-weight:500; color:var(--ink); font-size:17px; letter-spacing:.22em; }
 
   /* ---------- colour ---------- */
-  .swatches{ display:grid; grid-template-columns:repeat(auto-fit,minmax(180px,1fr)); gap:var(--s3); }
-  .sw{ border:1px solid var(--line); border-radius:3px; overflow:hidden; background:var(--surface); }
-  .sw .chip{ height:120px; }
-  .sw .info{ padding:14px 16px 16px; }
-  .sw .name{ font-family:var(--serif); font-size:19px; color:var(--ink); font-weight:600; }
-  .sw .role{ font-size:11.5px; letter-spacing:.04em; color:var(--muted); margin-bottom:10px; }
-  .sw .val{ font-family:var(--sans); font-size:12px; color:var(--body); display:flex; justify-content:space-between; gap:8px; padding:2px 0; border-top:1px solid var(--line); }
-  .sw .val span:first-child{ color:var(--muted); letter-spacing:.08em; text-transform:uppercase; font-size:10.5px; }
-  .ratio{ display:flex; height:30px; border-radius:3px; overflow:hidden; border:1px solid var(--line); margin-top:var(--s3); }
+  .swatches{ display:grid; gap:var(--s4); grid-template-columns:repeat(auto-fit,minmax(176px,1fr)); }
+  .sw{ padding:12px; }
+  .sw .chipc{ height:104px; border-radius:14px; box-shadow:var(--sheen); }
+  .sw .chipc.soft{ box-shadow:var(--clay-body), inset 0 0 0 1px var(--line); }
+  .sw .info{ padding:14px 8px 4px; }
+  .sw .name{ font-size:16px; font-weight:600; color:var(--ink); letter-spacing:-.01em; }
+  .sw .role{ font-size:12.5px; color:var(--muted); margin-bottom:10px; }
+  .sw .val{ display:flex; justify-content:space-between; gap:8px; padding:3px 0; font-size:12px; font-variant-numeric:tabular-nums; border-top:1px solid var(--line); }
+  .sw .val span{ color:var(--muted); }
+  .ratio{ display:flex; height:28px; border-radius:var(--radius-pill); overflow:hidden; box-shadow:var(--press); }
   .ratio i{ display:block; }
+  .strip{ display:flex; gap:var(--s1); flex-wrap:wrap; margin-top:var(--s2); }
+  .strip i{ flex:1 1 92px; height:64px; border-radius:14px; display:flex; align-items:flex-end; padding:8px 10px; font-style:normal; font-size:11px; box-shadow:var(--sheen); }
+
+  /* dark panel: real dark tokens, scoped */
+  .dark{ --paper:#1C1A18; --surface:#24221F; --well:#161412; --ink:#F4EFE4; --body:#CFC8BB; --muted:#A39B8E; --red:#DB6B5D; --red-deep:#E58478; --line:#36332E;
+    --clay-hi:rgb(255 238 214 / .05); --clay-lo:rgb(0 0 0 / .55); --clay-rim:rgb(255 244 228 / .07); --clay-shade:rgb(0 0 0 / .28);
+    background:var(--paper); color:var(--body); border-radius:var(--radius-panel); padding:var(--s5) var(--s4); }
+  .dark h3{ color:var(--ink); }
+  /* Elevation tokens resolve their var(--clay-*) where declared, so a scoped theme re-declares them */
+  .dark, .on-ink > *{ --raise-1:-3px -3px 8px var(--clay-hi), 4px 5px 12px var(--clay-lo); --raise-2:-8px -8px 20px var(--clay-hi), 10px 12px 28px var(--clay-lo); --raise-3:-14px -14px 36px var(--clay-hi), 20px 26px 56px var(--clay-lo); --press:inset 3px 4px 8px var(--clay-lo), inset -3px -3px 8px var(--clay-hi); --clay-body:inset 2px 2px 1px var(--clay-rim), inset -6px -8px 16px var(--clay-shade); --sheen:inset 2px 3px 3px rgb(255 255 255 / 0.22), inset -4px -6px 10px rgb(0 0 0 / 0.25); }
+
+  /* ---------- depth ---------- */
+  .levels{ display:grid; gap:var(--s4); grid-template-columns:repeat(auto-fit,minmax(150px,1fr)); }
+  .lvl{ height:128px; border-radius:var(--radius-card); background:var(--surface); display:flex; align-items:flex-end; padding:var(--s2); font-size:13px; color:var(--muted); }
+  .lvl b{ display:block; color:var(--ink); font-weight:600; font-size:14px; }
+  .lvl.l0{ background:transparent; box-shadow:inset 0 0 0 1px var(--line); }
+  .lvl.l1{ box-shadow:var(--clay-body), var(--raise-1); }
+  .lvl.l2{ box-shadow:var(--clay-body), var(--raise-2); }
+  .lvl.l3{ box-shadow:var(--clay-body), var(--raise-3); }
+  .lvl.lp{ background:var(--well); box-shadow:var(--press); }
+  .rules{ margin:var(--s2) 0 0; padding-left:18px; max-width:68ch; }
+  .rules li{ margin-bottom:10px; font-size:15px; }
+  .rules li::marker{ color:var(--red); }
 
   /* ---------- type specimen ---------- */
-  .scale-row{ display:flex; align-items:baseline; gap:var(--s3); padding:var(--s2) 0; border-bottom:1px solid var(--line); flex-wrap:wrap; }
-  .scale-row .spec{ font-family:var(--sans); font-size:11px; letter-spacing:.1em; text-transform:uppercase; color:var(--muted); min-width:160px; }
-  .sample-serif{ font-family:var(--serif); color:var(--ink); }
-  .sample-sans{ font-family:var(--sans); color:var(--ink); }
-  .codeblock{ font-family:ui-monospace,'SF Mono',Menlo,Consolas,monospace; font-size:12.5px; color:var(--body);
-    background:var(--surface); border:1px solid var(--line); border-radius:3px; padding:14px 16px; overflow:auto; white-space:pre; line-height:1.6; }
+  .scale-row{ display:flex; align-items:baseline; gap:var(--s3); flex-wrap:wrap; padding:var(--s2) 0; border-bottom:1px solid var(--line); }
+  .scale-row:last-child{ border-bottom:0; }
+  .scale-row .spec{ font-size:12px; color:var(--muted); min-width:150px; font-variant-numeric:tabular-nums; }
+  .s-sans{ color:var(--ink); font-weight:500; letter-spacing:-.02em; line-height:1.1; }
+  .codeblock{ font:12.5px/1.6 var(--mono); color:var(--body); background:var(--well); border-radius:var(--radius-card); box-shadow:var(--press); padding:var(--s3); overflow:auto; white-space:pre; }
 
   /* ---------- components ---------- */
-  .btn{ display:inline-flex; align-items:center; justify-content:center; font-family:var(--sans);
-    font-weight:500; font-size:12.5px; letter-spacing:.14em; text-transform:uppercase;
-    padding:13px 26px; border-radius:3px; border:1px solid var(--ink); cursor:pointer; transition:all .2s; text-decoration:none; }
-  .btn-primary{ background:var(--ink); color:var(--paper); }
-  .btn-primary:hover{ background:#000; border-color:#000; color:var(--paper); }
-  .btn-ghost{ background:transparent; color:var(--ink); }
-  .btn-ghost:hover{ background:var(--ink); color:var(--paper); }
-  .btn-accent{ background:var(--red); border-color:var(--red); color:#fff; }
-  .btn-accent:hover{ background:var(--red-deep); border-color:var(--red-deep); }
-  .row{ display:flex; gap:var(--s2); flex-wrap:wrap; align-items:center; }
-  .field{ display:block; width:100%; max-width:360px; font-family:var(--sans); font-size:14px; color:var(--ink);
-    background:var(--surface); border:1px solid var(--line); border-radius:3px; padding:12px 14px; }
-  .field:focus{ outline:none; border-color:var(--ink); }
-  .label{ font-family:var(--sans); font-size:11px; letter-spacing:.14em; text-transform:uppercase; color:var(--muted); display:block; margin-bottom:8px; }
-  .divider-dot{ display:flex; align-items:center; gap:14px; color:var(--line); }
+  .row{ display:flex; gap:var(--s3); flex-wrap:wrap; align-items:center; }
+  .divider-dot{ display:flex; align-items:center; gap:14px; }
   .divider-dot::before,.divider-dot::after{ content:""; height:1px; background:var(--line); flex:1; }
-  .divider-dot b{ color:var(--red); font-size:18px; }
+  .divider-dot b{ color:var(--red); font-size:18px; font-weight:400; }
 
-  /* ---------- email ---------- */
-  .email-mock{ background:#fff; border:1px solid var(--line); border-radius:4px; overflow:hidden; }
+  /* ---------- layout ---------- */
+  .space{ display:flex; gap:var(--s3); flex-wrap:wrap; align-items:flex-end; }
+  .space i{ display:block; border-radius:6px; background:var(--ink); box-shadow:var(--sheen); }
+  .phone{ width:236px; flex:none; border-radius:40px; padding:12px; background:var(--surface); box-shadow:var(--clay-body), var(--raise-2); }
+  .phone .scr{ border-radius:30px; background:var(--paper); padding:28px 18px 22px; min-height:380px; box-shadow:var(--press); }
+  .phone .wordmark{ font-size:9.5px; }
+  .phone .h{ font-size:22px; font-weight:500; letter-spacing:-.02em; line-height:1.15; color:var(--ink); margin:22px 0 8px; }
+  .phone .p{ font-size:11.5px; }
+  .phone .mini{ border-radius:16px; background:var(--surface); padding:12px; margin-top:14px; font-size:11px; box-shadow:var(--clay-body), var(--raise-1); }
+  .phone .btn{ min-height:40px; font-size:12px; width:100%; margin-top:18px; }
+  .split{ display:flex; gap:var(--s5); align-items:flex-start; flex-wrap:wrap; }
+  .split > ul{ flex:1 1 300px; }
+
+  /* ---------- email (flat on purpose) ---------- */
+  .email-mock{ background:#fff; border:1px solid var(--line); border-radius:8px; overflow:hidden; max-width:560px; }
   .email-body{ padding:var(--s6) var(--s5); text-align:center; }
-  .email-body .wm{ font-size:24px; }
-  .email-h{ font-family:var(--serif); font-size:26px; color:var(--ink); margin:var(--s4) 0 var(--s2); }
-  .email-p{ font-size:14.5px; color:var(--body); max-width:42ch; margin:0 auto var(--s3); }
-  .email-foot{ background:var(--paper); border-top:1px solid var(--line); padding:22px; text-align:center; font-size:11.5px; color:var(--muted); letter-spacing:.04em; }
-
-  .sig{ display:flex; gap:18px; align-items:center; background:#fff; border:1px solid var(--line); border-radius:4px; padding:20px 24px; }
-  .sig .id .n{ font-family:var(--serif); font-size:20px; color:var(--ink); font-weight:600; letter-spacing:.04em; }
-  .sig .id .t{ font-family:var(--sans); font-size:11px; letter-spacing:.12em; text-transform:uppercase; color:var(--muted); margin-top:3px; }
-  .sig .id .c{ font-family:var(--sans); font-size:12.5px; color:var(--body); margin-top:10px; line-height:1.7; }
-  .sig .id .c a{ border:0; color:var(--body); }
-  .sig .id .c a:hover{ color:var(--red); }
+  .email-body .wordmark{ font-size:22px; }
+  .email-h{ font-size:24px; font-weight:500; letter-spacing:-.02em; color:var(--ink); margin:var(--s4) 0 var(--s2); }
+  .email-p{ font-size:14.5px; max-width:42ch; margin:0 auto var(--s3); }
+  .email-btn{ display:inline-block; background:var(--ink); color:var(--paper); border:0; border-radius:8px; padding:14px 22px; font-size:14px; font-weight:500; }
+  @media (hover:hover){ .email-btn:hover{ color:var(--paper); } }
+  .email-foot{ background:var(--paper); border-top:1px solid var(--line); padding:22px; text-align:center; font-size:12px; color:var(--muted); }
+  .sig{ display:flex; gap:18px; align-items:center; background:#fff; border:1px solid var(--line); border-radius:8px; padding:20px 24px; max-width:520px; }
+  .sig .n{ font-size:18px; font-weight:600; color:var(--ink); letter-spacing:-.01em; }
+  .sig .t{ font-size:12px; color:var(--muted); margin-top:2px; }
+  .sig .c{ font-size:13px; margin-top:10px; line-height:1.7; }
+  .sig .c a{ border:0; color:var(--body); }
   .sig .bar{ width:1px; align-self:stretch; background:var(--line); }
 
   /* ---------- social ---------- */
-  .social-grid{ display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:var(--s4); align-items:start; }
-  .avatar{ width:128px; height:128px; border-radius:50%; overflow:hidden; border:1px solid var(--line); }
-  .avatar.sq{ border-radius:14px; }
-  .av-mono{ width:128px; height:128px; border-radius:50%; background:var(--paper); border:1px solid var(--line);
-    display:flex; align-items:center; justify-content:center; font-family:var(--serif); font-weight:500;
-    color:var(--ink); font-size:46px; letter-spacing:.06em; }
-  .banner{ width:100%; aspect-ratio:1500/500; background:var(--paper); border:1px solid var(--line); border-radius:4px;
-    display:flex; flex-direction:column; align-items:center; justify-content:center; }
-  .banner .wm{ font-size:clamp(20px,4vw,34px); }
-  .post{ width:100%; aspect-ratio:1/1; background:var(--paper); border:1px solid var(--line); border-radius:4px; position:relative;
-    display:flex; flex-direction:column; align-items:flex-start; justify-content:flex-end; padding:var(--s4); }
-  .post .kicker{ font-family:var(--sans); font-size:10px; letter-spacing:.2em; text-transform:uppercase; color:var(--muted); }
-  .post .ph{ font-family:var(--serif); font-size:clamp(20px,3.6vw,30px); color:var(--ink); line-height:1.15; margin-top:8px; }
-  .post .mk{ position:absolute; top:var(--s4); left:var(--s4); }
+  .avatar{ width:128px; height:128px; border-radius:50%; display:flex; align-items:center; justify-content:center; background:var(--surface); box-shadow:var(--clay-body), var(--raise-2); }
+  .avatar .clay-mark{ --size:64px; box-shadow:var(--sheen), var(--raise-1); }
+  .av-mono{ font-family:var(--serif); font-weight:500; color:var(--ink); font-size:46px; letter-spacing:.06em; }
+  .banner{ width:100%; aspect-ratio:1500/500; border-radius:var(--radius-card); background:var(--paper); box-shadow:var(--press); display:flex; align-items:center; justify-content:center; gap:clamp(16px,4vw,40px); padding:var(--s3); }
+  .banner .clay-mark{ --size:clamp(48px,9vw,88px); box-shadow:var(--sheen), var(--raise-2); }
+  .banner .wordmark{ font-size:clamp(14px,3.4vw,30px); }
+  .post{ width:100%; max-width:360px; aspect-ratio:1/1; border-radius:var(--radius-card); background:var(--paper); box-shadow:var(--press); position:relative; display:flex; flex-direction:column; justify-content:flex-end; padding:var(--s4); }
+  .post .clay-mark{ --size:64px; position:absolute; top:var(--s4); left:var(--s4); box-shadow:var(--sheen), var(--raise-2); }
+  .post .k{ font-size:12px; color:var(--muted); }
+  .post .ph{ font-size:clamp(20px,3.6vw,26px); font-weight:500; letter-spacing:-.02em; line-height:1.15; color:var(--ink); margin-top:8px; }
+  .wall img{ width:100%; display:block; border-radius:var(--radius-card); box-shadow:var(--raise-2); }
 
   /* ---------- voice ---------- */
-  .voice{ display:grid; grid-template-columns:1fr 1fr; gap:var(--s3); }
-  .voice .col{ background:var(--surface); border:1px solid var(--line); border-radius:3px; padding:var(--s4); }
-  .voice .col .h{ font-family:var(--sans); font-size:11px; letter-spacing:.16em; text-transform:uppercase; margin-bottom:var(--s2); }
-  .voice .yes .h{ color:#5b7a52; } .voice .no .h{ color:var(--red); }
-  .voice ul{ margin:0; padding-left:18px; } .voice li{ margin-bottom:10px; font-size:14.5px; }
+  .voice{ display:grid; gap:var(--s4); grid-template-columns:1fr 1fr; }
+  .voice .yes h3 b{ color:var(--good); } .voice .no h3 b{ color:var(--red); }
+  .voice ul{ margin:0; padding-left:18px; } .voice li{ margin-bottom:10px; font-size:15px; }
 
   /* ---------- footer ---------- */
   footer{ text-align:center; padding:var(--s7) var(--s4) var(--s6); }
-  footer .wm{ font-size:18px; }
-  footer .ft-tag{ font-size:11px; letter-spacing:.18em; color:var(--muted); margin-top:14px; }
-  footer .ft-meta{ font-size:11.5px; color:var(--muted); margin-top:var(--s4); letter-spacing:.06em; }
-  footer .ft-meta a{ color:var(--muted); border-bottom:1px solid var(--line); }
-  footer .ft-meta a:hover{ color:var(--red); border-color:var(--red); }
+  footer .wordmark{ font-size:17px; }
+  footer .meta{ font-size:13px; color:var(--muted); margin-top:var(--s3); }
+  footer .meta a{ color:var(--muted); }
 
   @media (max-width:680px){
-    .toc{ grid-template-columns:1fr; }
-    .voice{ grid-template-columns:1fr; }
+    .wrap{ padding:0 max(var(--s2), env(safe-area-inset-left)); }
     section{ padding:var(--s6) 0; }
+    .toc,.voice{ grid-template-columns:1fr; }
+    .card{ padding:var(--s3); }
+    .dark{ padding:var(--s4) var(--s2); }
     .sig{ flex-direction:column; align-items:flex-start; }
     .sig .bar{ display:none; }
+    .phone{ margin:0 auto; }
+  }
+  @media (prefers-reduced-motion:reduce){
+    .fade{ animation:none; opacity:1; transform:none; }
+    .btn:active{ transform:none; }
+  }
+  /* Depth never carries meaning alone: with more contrast, hairlines take over */
+  @media (prefers-contrast:more){
+    .card,.btn,.chip,.lvl,.phone,.avatar,.seg a[aria-current]{ box-shadow:none; border:1px solid var(--muted); }
+    .field,.well,.seg,.switch .track{ border:1px solid var(--muted); }
   }
 </style>
-  <script type="application/json" id="brand-tokens">{"$name":"Luca Ramseyer — Brand Tokens","$description":"Single source of truth. Run build_tokens.py to regenerate tokens/tokens.css, tokens/theme.css and the :root block + embedded JSON in style-guide.html.","$version":"1.0.0","color":{"paper":{"hex":"#F4EFE4","rgb":"244 239 228","cmyk":"4 6 11 0","role":"primary surface / paper"},"surface":{"hex":"#FBF8F1","rgb":"251 248 241","cmyk":"1 2 5 0","role":"elevated panels / cards"},"ink":{"hex":"#211F1C","rgb":"33 31 28","cmyk":"40 30 30 100","role":"wordmark / headings (print: rich black)"},"body":{"hex":"#423D37","rgb":"66 61 55","cmyk":"0 0 0 82","role":"body text"},"muted":{"hex":"#857E72","rgb":"133 126 114","cmyk":"0 5 14 48","role":"captions / secondary"},"red":{"hex":"#C0473A","rgb":"192 71 58","cmyk":"0 65 72 22","role":"accent — use sparingly"},"red-deep":{"hex":"#A63B30","rgb":"166 59 48","cmyk":"0 64 71 35","role":"accent hover / pressed"},"line":{"hex":"#DAD2C4","rgb":"218 210 196","cmyk":"0 4 10 15","role":"hairline rules / borders"}},"font":{"serif":"'Cormorant Garamond', 'Cormorant', Georgia, 'Times New Roman', serif","sans":"'Montserrat', 'Helvetica Neue', Arial, sans-serif","googleImport":"https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Montserrat:wght@300;400;500;600&display=swap"},"license":{"fonts":{"id":"SIL Open Font License 1.1","url":"https://openfontlicense.org","commercialUse":true,"attributionRequired":false,"note":"Free for personal & commercial use, including embedding and modification. Include the matching OFL file ONLY when redistributing the font FILES themselves (e.g. self-hosting webfonts or bundling in an app). Documents/exports (PDF, PNG, SVG) and Google Fonts CDN usage need NO license file.","files":{"Cormorant Garamond":{"copyright":"Copyright 2015 The Cormorant Project Authors (github.com/CatharsisFonts/Cormorant)","ofl":"fonts/OFL-CormorantGaramond.txt","reservedFontName":false},"Montserrat":{"copyright":"Copyright 2024 The Montserrat Project Authors (github.com/JulietaUla/Montserrat)","ofl":"fonts/OFL-Montserrat.txt","reservedFontName":false}}}},"type":{"display":56,"h1":40,"h2":30,"h3":21,"body":16,"small":13,"eyebrow":12},"tracking":{"wordmark":"0.24em","label":"0.14em","eyebrow":"0.22em"},"leading":{"body":1.75,"tight":1.15},"space":[8,16,24,32,48,64,96],"radius":{"ui":"3px","mark":"10%"},"motion":{"fast":"200ms"},"layout":{"maxWidth":"920px"}}</script>
+  <script type="application/json" id="brand-tokens">{"$name":"Luca Ramseyer — Brand Tokens","$description":"Single source of truth. Run build_tokens.py to regenerate tokens/tokens.css, tokens/theme.css and the :root block + embedded JSON in style-guide.html.","$version":"3.0.0","color":{"paper":{"hex":"#F4EFE4","rgb":"244 239 228","cmyk":"4 6 11 0","role":"primary surface / paper"},"surface":{"hex":"#FBF8F1","rgb":"251 248 241","cmyk":"1 2 5 0","role":"elevated panels / cards"},"ink":{"hex":"#211F1C","rgb":"33 31 28","cmyk":"40 30 30 100","role":"wordmark / headings (print: rich black)"},"body":{"hex":"#423D37","rgb":"66 61 55","cmyk":"0 0 0 82","role":"body text"},"muted":{"hex":"#6F685D","rgb":"111 104 93","cmyk":"0 6 16 56","role":"captions / secondary text (4.8:1 on paper, passes WCAG AA)"},"stone":{"hex":"#857E72","rgb":"133 126 114","cmyk":"0 5 14 48","role":"non-text only: icons, disabled states, chart series (3.5:1, too light for small text)"},"red":{"hex":"#C0473A","rgb":"192 71 58","cmyk":"0 65 72 22","role":"accent — use sparingly"},"red-deep":{"hex":"#A63B30","rgb":"166 59 48","cmyk":"0 64 71 35","role":"accent hover / pressed"},"line":{"hex":"#DAD2C4","rgb":"218 210 196","cmyk":"0 4 10 15","role":"hairline rules / borders"},"good":{"hex":"#5B7A52","rgb":"91 122 82","cmyk":"25 0 33 52","role":"positive / success, sparingly"},"well":{"hex":"#ECE5D8","rgb":"236 229 216","cmyk":"5 8 14 0","role":"recessed ground: inputs, wells, pressed controls"}},"font":{"serif":"'Cormorant Garamond', 'Cormorant', Georgia, 'Times New Roman', serif","sans":"'Schibsted Grotesk', 'Helvetica Neue', Arial, sans-serif","googleImport":"https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500&family=Schibsted+Grotesk:wght@400;500;600&display=swap","mono":"ui-monospace, 'SF Mono', Menlo, Consolas, monospace","$roles":"serif: the wordmark and LR monogram only. sans: everything else (headings, body, UI, data)."},"license":{"fonts":{"id":"SIL Open Font License 1.1","url":"https://openfontlicense.org","commercialUse":true,"attributionRequired":false,"note":"Free for personal & commercial use, including embedding and modification. Include the matching OFL file ONLY when redistributing the font FILES themselves (e.g. self-hosting webfonts or bundling in an app). Documents/exports (PDF, PNG, SVG) and Google Fonts CDN usage need NO license file.","files":{"Cormorant Garamond":{"copyright":"Copyright 2015 The Cormorant Project Authors (github.com/CatharsisFonts/Cormorant)","ofl":"fonts/OFL-CormorantGaramond.txt","reservedFontName":false},"Schibsted Grotesk":{"copyright":"Copyright 2023 The Schibsted-Grotesk Project Authors (github.com/schibsted/schibsted-grotesk)","ofl":"fonts/OFL-SchibstedGrotesk.txt","reservedFontName":false}}}},"type":{"display":56,"h1":44,"h2":28,"h3":19,"body":16,"small":13,"label":12},"tracking":{"wordmark":"0.24em","display":"-0.03em","heading":"-0.02em","label":"0.08em"},"leading":{"body":1.6,"tight":1.1},"space":[8,16,24,32,48,64,96],"radius":{"ui":"14px","card":"24px","panel":"32px","pill":"999px","mark":"10%","$note":"Nested radius: inner = outer minus the padding between them, never under 8px. The mark keeps its fixed 10%."},"motion":{"fast":"200ms","press":"140ms","enter":"500ms","easeOut":"cubic-bezier(0.23, 1, 0.32, 1)","pressScale":"0.98"},"layout":{"maxWidth":"920px"},"dark":{"$description":"Dark theme, after the mono-dark wallpapers: ink ground, cream type, one accent. Applied via prefers-color-scheme.","paper":"#1C1A18","surface":"#24221F","ink":"#F4EFE4","body":"#CFC8BB","muted":"#A39B8E","red":"#DB6B5D","red-deep":"#E58478","line":"#36332E","good":"#8FAE85","well":"#161412"},"chart":{"$description":"Series order. Ink carries the main series; red only highlights the one value that matters.","light":["#211F1C","#C0473A","#857E72","#5B7A52","#C9BFAE"],"dark":["#F4EFE4","#DB6B5D","#A39B8E","#8FAE85","#5A554D"]},"weight":{"body":400,"heading":500,"strong":600},"clay":{"$description":"Soft clay depth. Light comes from the top left. Every raised thing casts a warm shadow down-right and catches a highlight up-left; pressed things invert. Values are RGB with alpha so they sit on any ground.","light":{"hi":"rgb(255 253 248 / 0.9)","lo":"rgb(110 92 64 / 0.24)","rim":"rgb(255 255 255 / 0.75)","shade":"rgb(110 92 64 / 0.09)"},"dark":{"hi":"rgb(255 238 214 / 0.05)","lo":"rgb(0 0 0 / 0.55)","rim":"rgb(255 244 228 / 0.07)","shade":"rgb(0 0 0 / 0.28)"}},"elevation":{"$description":"Use these, never hand-written shadows. raise-* lift a surface off the ground, press sinks it, clay-body adds the soft inner body to a raised surface, sheen does the same for filled red or ink controls.","raise-1":"-3px -3px 8px var(--clay-hi), 4px 5px 12px var(--clay-lo)","raise-2":"-8px -8px 20px var(--clay-hi), 10px 12px 28px var(--clay-lo)","raise-3":"-14px -14px 36px var(--clay-hi), 20px 26px 56px var(--clay-lo)","press":"inset 3px 4px 8px var(--clay-lo), inset -3px -3px 8px var(--clay-hi)","clay-body":"inset 2px 2px 1px var(--clay-rim), inset -6px -8px 16px var(--clay-shade)","sheen":"inset 2px 3px 3px rgb(255 255 255 / 0.22), inset -4px -6px 10px rgb(0 0 0 / 0.25)"}}</script>
 </head>
 <body>
 
-<!-- HERO -->
+<!-- One cross, defined once. The filter debosses it: a soft inner shadow from the top left. -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <filter id="deboss" x="-10%" y="-10%" width="120%" height="120%">
+      <feComponentTransfer in="SourceAlpha" result="inv"><feFuncA type="table" tableValues="1 0"/></feComponentTransfer>
+      <feOffset in="inv" dx="1.6" dy="2" result="off"/>
+      <feGaussianBlur in="off" stdDeviation="1.6" result="blur"/>
+      <feFlood flood-color="#000" flood-opacity=".32"/>
+      <feComposite in2="blur" operator="in"/>
+      <feComposite in2="SourceAlpha" operator="in" result="shadow"/>
+      <feMerge><feMergeNode in="SourceGraphic"/><feMergeNode in="shadow"/></feMerge>
+    </filter>
+    <symbol id="cross" viewBox="0 0 100 100">
+      <path filter="url(#deboss)" fill="currentColor" d="M39.25 19h21.5v20.25H81v21.5H60.75V81h-21.5V60.75H19v-21.5h20.25z"/>
+    </symbol>
+  </defs>
+</svg>
+
 <header class="hero">
-  <h1 class="wordmark fade d1">LUCA RAMSEYER</h1>
-  <div class="tagline fade d2">Systems<span class="sep">·</span>Cybersecurity<span class="sep">·</span>Software</div>
-  <div class="rule fade d3"></div>
-  <div class="docline fade d3">Brand &amp; Identity Guidelines</div>
-  <div class="meta fade d4">Version 1.0<span class="dot">·</span>raml.ch</div>
+  <div class="clay-mark fade" role="img" aria-label="The Swiss cross mark in clay">
+    <svg viewBox="0 0 100 100" aria-hidden="true"><use href="#cross"/></svg>
+  </div>
+  <h1 class="wordmark fade d2">LUCA RAMSEYER</h1>
+  <div class="tagline fade d3">Systems<span class="sep">·</span>Cybersecurity<span class="sep">·</span>Software</div>
+  <div class="docline fade d4"><span class="chip">Brand guidelines</span><span class="chip">v3.0 · Soft clay</span></div>
 </header>
 
 <main class="wrap">
 
-  <!-- INTRO / CONTENTS -->
-  <section id="intro" style="border-top:0;">
+  <section id="intro">
     <p class="eyebrow"><span class="num">00</span>Overview</p>
-    <h2>A quiet, precise identity for systems, security and software.</h2>
-    <p class="lead" style="margin-top:var(--s3);">The brand is built on Swiss restraint: generous whitespace, a refined serif wordmark, one calm accent. It should feel considered and trustworthy — the visual equivalent of well-architected infrastructure. When in doubt, remove something.</p>
-    <div class="toc">
+    <h2>Quiet, precise, and now with weight</h2>
+    <p class="lead" style="margin-top:var(--s3);">Version 3 keeps everything people recognise: paper and ink, the Swiss red, the wordmark, the cross. What changes is the material. Surfaces are soft clay, lit from the top left. Things you can press rise out of the page; things you fill in sink into it. Depth replaces the hairline as the way the eye finds structure.</p>
+    <nav class="toc" aria-label="Contents">
       <a href="#logo"><span class="n">01</span>Wordmark &amp; logo</a>
       <a href="#mark"><span class="n">02</span>The mark</a>
       <a href="#colour"><span class="n">03</span>Colour</a>
       <a href="#type"><span class="n">04</span>Typography</a>
-      <a href="#components"><span class="n">05</span>Web components</a>
-      <a href="#layout"><span class="n">06</span>Layout &amp; spacing</a>
-      <a href="#email"><span class="n">07</span>Email</a>
-      <a href="#social"><span class="n">08</span>Social media</a>
-      <a href="#wallpapers"><span class="n">09</span>Wallpapers</a>
-      <a href="#voice"><span class="n">10</span>Voice &amp; tone</a>
-      <a href="#license"><span class="n">11</span>Licensing &amp; credits</a>
-    </div>
+      <a href="#depth"><span class="n">05</span>Depth &amp; clay</a>
+      <a href="#components"><span class="n">06</span>Components</a>
+      <a href="#layout"><span class="n">07</span>Layout, spacing &amp; mobile</a>
+      <a href="#email"><span class="n">08</span>Email</a>
+      <a href="#social"><span class="n">09</span>Social media</a>
+      <a href="#wallpapers"><span class="n">10</span>Wallpapers</a>
+      <a href="#voice"><span class="n">11</span>Voice &amp; tone</a>
+      <a href="#license"><span class="n">12</span>Licensing &amp; credits</a>
+    </nav>
   </section>
 
   <!-- 01 LOGO -->
@@ -274,36 +371,34 @@
     <div class="section-head">
       <p class="eyebrow"><span class="num">01</span>Wordmark &amp; logo</p>
       <h2>The wordmark</h2>
-      <p class="desc">The primary logo is the name set in Cormorant Garamond Medium, all caps, with wide tracking. The tagline sits beneath in Montserrat. Tracking is part of the identity — never tighten it.</p>
+      <p class="desc">The name in Cormorant Garamond Medium, all caps, tracked +0.24em, with the tagline beneath in Schibsted Grotesk. The wordmark is type, so it stays flat: clay is for the surface it sits on, never for the letters.</p>
     </div>
-
-    <div class="logo-row">
-      <div class="panel center grow">
-        <div class="wm lg">LUCA RAMSEYER</div>
+    <div class="grid">
+      <div class="card center">
+        <div class="wordmark wm-lg">LUCA RAMSEYER</div>
         <div class="wm-tag">Systems<span class="sep">·</span>Cybersecurity<span class="sep">·</span>Software</div>
-        <div class="caption">Primary lockup — wordmark + tagline</div>
+        <div class="caption">Primary lockup</div>
       </div>
-      <div class="panel center grow" style="background:var(--ink);">
-        <div class="wm lg" style="color:var(--paper);">LUCA RAMSEYER</div>
-        <div class="wm-tag" style="color:#cfc8ba;">Systems<span class="sep" style="color:var(--red);">·</span>Cybersecurity<span class="sep" style="color:var(--red);">·</span>Software</div>
-        <div class="caption" style="color:#9a9384;">Reversed — on ink</div>
+      <div class="card center on-ink">
+        <div class="wordmark wm-lg">LUCA RAMSEYER</div>
+        <div class="wm-tag">Systems<span class="sep">·</span>Cybersecurity<span class="sep">·</span>Software</div>
+        <div class="caption">Reversed, on ink</div>
       </div>
     </div>
-
-    <div class="lockups" style="margin-top:var(--s4);">
-      <div class="panel center"><div class="wm md">LUCA RAMSEYER</div><div class="caption">Wordmark only</div></div>
-      <div class="panel center"><div class="clearspace"><div class="wm sm">LUCA RAMSEYER</div></div><div class="caption">Clear space — keep the cap-height of “L” clear on all sides</div></div>
-      <div class="panel center"><div class="wm sm" style="font-size:12px;">LUCA RAMSEYER</div><div class="caption">Minimum width — 32&nbsp;mm in print / 180&nbsp;px on screen</div></div>
+    <div class="grid" style="margin-top:var(--s4);">
+      <div class="card center"><div class="wordmark wm-md">LUCA RAMSEYER</div><div class="caption">Wordmark only</div></div>
+      <div class="card center"><div class="clearspace"><div class="wordmark wm-sm">LUCA RAMSEYER</div></div><div class="caption">Clear space: the cap height of “L” on every side</div></div>
+      <div class="card center"><div class="wordmark" style="font-size:12px;">LUCA RAMSEYER</div><div class="caption">Minimum width: 32&nbsp;mm in print, 180&nbsp;px on screen</div></div>
     </div>
 
-    <h3 style="margin-top:var(--s6);">Do &amp; don’t</h3>
+    <h3 class="mt6">Do &amp; don’t</h3>
     <div class="dd">
-      <div class="item yes"><div class="badwm" style="letter-spacing:.22em;">LUCA RAMSEYER</div><div class="tag">✓ Keep the wide tracking</div></div>
-      <div class="item no"><div class="badwm" style="letter-spacing:-.02em;">LUCA RAMSEYER</div><div class="tag">✕ Don’t tighten the letters</div></div>
-      <div class="item no"><div class="badwm" style="color:var(--red);">LUCA RAMSEYER</div><div class="tag">✕ Don’t recolour the wordmark</div></div>
-      <div class="item no"><div class="badwm" style="transform:scaleX(1.4); letter-spacing:.1em;">LUCA</div><div class="tag">✕ Don’t stretch or distort</div></div>
-      <div class="item no"><div class="badwm" style="text-shadow:2px 3px 5px rgba(0,0,0,.35);">LUCA RAMSEYER</div><div class="tag">✕ No shadows or effects</div></div>
-      <div class="item no" style="background:linear-gradient(120deg,#7a8,#46c,#b59);"><div class="badwm" style="color:#fff;">LUCA RAMSEYER</div><div class="tag" style="color:#fff;">✕ Not on busy backgrounds</div></div>
+      <div class="card center yes"><div class="badwm">LUCA RAMSEYER</div><div class="tag"><b>Do</b> keep the wide tracking</div></div>
+      <div class="card center no"><div class="badwm" style="letter-spacing:-.02em;">LUCA RAMSEYER</div><div class="tag"><b>Don’t</b> tighten the letters</div></div>
+      <div class="card center no"><div class="badwm" style="color:var(--red);">LUCA RAMSEYER</div><div class="tag"><b>Don’t</b> recolour it</div></div>
+      <div class="card center no"><div class="badwm" style="transform:scaleX(1.4); letter-spacing:.1em;">LUCA</div><div class="tag"><b>Don’t</b> stretch or distort</div></div>
+      <div class="card center no"><div class="badwm" style="text-shadow:-1px -1px 1px #fff, 2px 2px 3px rgb(110 92 64 / .5);">LUCA RAMSEYER</div><div class="tag"><b>Don’t</b> emboss or shadow the letters</div></div>
+      <div class="card center no" style="background:linear-gradient(120deg,#7a8,#46c,#b59);"><div class="badwm" style="color:#fff;">LUCA RAMSEYER</div><div class="tag" style="color:#fff;"><b style="color:#fff;">Don’t</b> use busy grounds</div></div>
     </div>
   </section>
 
@@ -311,36 +406,27 @@
   <section id="mark">
     <div class="section-head">
       <p class="eyebrow"><span class="num">02</span>The mark</p>
-      <h2>The Swiss cross</h2>
-      <p class="desc">A single brand mark for square spaces — favicons, avatars, app icons, stamps. A muted-red rounded square with the cross knocked out so the surface (paper or page) shows through. Use the wordmark wherever space allows; use the mark only where the wordmark won’t read.</p>
+      <h2>The Swiss cross, flat and in clay</h2>
+      <p class="desc">The mark has two finishes with one geometry. The flat mark covers favicons, app icons, stamps and print. The clay mark is the brand’s one rich object: a red tile with a soft sheen and the cross pressed into it, so the ground shows through as a dent. Use the clay mark at 64&nbsp;px and up, and once per view.</p>
     </div>
-    <div class="logo-row">
-      <div class="panel center grow">
-        <svg class="mark-svg" width="92" height="92" viewBox="0 0 100 100" aria-label="Swiss cross mark">
-          <rect width="100" height="100" rx="10" fill="var(--red)"/>
-          <rect x="39.25" y="19" width="21.5" height="62" fill="var(--paper)"/>
-          <rect x="19" y="39.25" width="62" height="21.5" fill="var(--paper)"/>
-        </svg>
-        <div class="caption">On cream — cross is the paper colour</div>
+    <div class="grid">
+      <div class="card center">
+        <div class="clay-mark" role="img" aria-label="Clay mark on cream"><svg viewBox="0 0 100 100" aria-hidden="true"><use href="#cross"/></svg></div>
+        <div class="caption">Clay, on cream: the hero object</div>
       </div>
-      <div class="panel center grow" style="background:#fff;">
-        <svg class="mark-svg" width="92" height="92" viewBox="0 0 100 100" aria-label="Swiss cross mark on white">
-          <rect width="100" height="100" rx="10" fill="var(--red)"/>
-          <rect x="39.25" y="19" width="21.5" height="62" fill="#fff"/>
-          <rect x="19" y="39.25" width="62" height="21.5" fill="#fff"/>
-        </svg>
-        <div class="caption">On white — cross is white</div>
+      <div class="card center on-ink">
+        <div class="clay-mark" style="color:var(--ink);" role="img" aria-label="Clay mark on ink"><svg viewBox="0 0 100 100" aria-hidden="true"><use href="#cross"/></svg></div>
+        <div class="caption">Clay, on ink: the cross takes the field colour</div>
       </div>
-      <div class="panel center grow" style="background:var(--ink);">
-        <svg class="mark-svg" width="92" height="92" viewBox="0 0 100 100" aria-label="Swiss cross mark on ink">
+      <div class="card center">
+        <svg width="120" height="120" viewBox="0 0 100 100" role="img" aria-label="Flat mark">
           <rect width="100" height="100" rx="10" fill="var(--red)"/>
-          <rect x="39.25" y="19" width="21.5" height="62" fill="var(--ink)"/>
-          <rect x="19" y="39.25" width="62" height="21.5" fill="var(--ink)"/>
+          <path fill="var(--surface)" d="M39.25 19h21.5v20.25H81v21.5H60.75V81h-21.5V60.75H19v-21.5h20.25z"/>
         </svg>
-        <div class="caption">On ink — cross matches the field</div>
+        <div class="caption">Flat: favicons, small sizes, print, email</div>
       </div>
     </div>
-    <p style="margin-top:var(--s4); color:var(--muted); font-size:13.5px;">Cross geometry: arm thickness = 21.5% of the square; arm length = 62%; corner radius = 10%. Keep these ratios fixed at any size.</p>
+    <p class="note" style="margin-top:var(--s4);">Fixed geometry for both finishes: arm thickness 21.5% of the square, arm length 62%, corner radius 10%. The clay finish adds light, never shape: no bevels on the outline, no extra rounding, no glow.</p>
   </section>
 
   <!-- 03 COLOUR -->
@@ -348,346 +434,328 @@
     <div class="section-head">
       <p class="eyebrow"><span class="num">03</span>Colour</p>
       <h2>Palette</h2>
-      <p class="desc">Mostly paper and ink, used at large scale, with the Swiss red reserved for small moments — a separator dot, a link on hover, one button. The red should never dominate a layout.</p>
+      <p class="desc">The same paper, ink and Swiss red as before, plus Well, the slightly darker paper that pressed surfaces sink into. Clay never brings a new hue: depth comes from light and shadow on these colours only.</p>
     </div>
     <div class="swatches">
-      <div class="sw">
-        <div class="chip" style="background:#F4EFE4;"></div>
-        <div class="info"><div class="name">Subtle Cream</div><div class="role">Primary surface / paper</div>
-          <div class="val"><span>HEX</span><b>#F4EFE4</b></div>
-          <div class="val"><span>RGB</span><b>244 · 239 · 228</b></div>
-          <div class="val"><span>CMYK</span><b>4 · 6 · 11 · 0</b></div>
-        </div>
+      <div class="card sw"><div class="chipc soft" style="background:#F4EFE4;"></div><div class="info"><div class="name">Subtle Cream</div><div class="role">Page ground</div><div class="val"><span>HEX</span><b>#F4EFE4</b></div><div class="val"><span>RGB</span><b>244 239 228</b></div><div class="val"><span>CMYK</span><b>4 6 11 0</b></div></div></div>
+      <div class="card sw"><div class="chipc soft" style="background:#FBF8F1;"></div><div class="info"><div class="name">Ivory</div><div class="role">Raised clay: cards, controls</div><div class="val"><span>HEX</span><b>#FBF8F1</b></div><div class="val"><span>RGB</span><b>251 248 241</b></div><div class="val"><span>CMYK</span><b>1 2 5 0</b></div></div></div>
+      <div class="card sw"><div class="chipc soft" style="background:#ECE5D8; box-shadow:var(--press);"></div><div class="info"><div class="name">Well</div><div class="role">Pressed: inputs, tracks, wells</div><div class="val"><span>HEX</span><b>#ECE5D8</b></div><div class="val"><span>RGB</span><b>236 229 216</b></div><div class="val"><span>CMYK</span><b>5 8 14 0</b></div></div></div>
+      <div class="card sw"><div class="chipc" style="background:#211F1C;"></div><div class="info"><div class="name">Ink</div><div class="role">Headings, primary button</div><div class="val"><span>HEX</span><b>#211F1C</b></div><div class="val"><span>RGB</span><b>33 31 28</b></div><div class="val"><span>CMYK*</span><b>40 30 30 100</b></div></div></div>
+      <div class="card sw"><div class="chipc" style="background:#423D37;"></div><div class="info"><div class="name">Graphite</div><div class="role">Body text</div><div class="val"><span>HEX</span><b>#423D37</b></div><div class="val"><span>RGB</span><b>66 61 55</b></div><div class="val"><span>CMYK</span><b>0 0 0 82</b></div></div></div>
+      <div class="card sw"><div class="chipc" style="background:#6F685D;"></div><div class="info"><div class="name">Stone Text</div><div class="role">Captions, 4.8:1 on paper</div><div class="val"><span>HEX</span><b>#6F685D</b></div><div class="val"><span>RGB</span><b>111 104 93</b></div><div class="val"><span>CMYK</span><b>0 6 16 56</b></div></div></div>
+      <div class="card sw"><div class="chipc" style="background:#857E72;"></div><div class="info"><div class="name">Stone</div><div class="role">Non-text: icons, charts</div><div class="val"><span>HEX</span><b>#857E72</b></div><div class="val"><span>RGB</span><b>133 126 114</b></div><div class="val"><span>CMYK</span><b>0 5 14 48</b></div></div></div>
+      <div class="card sw"><div class="chipc" style="background:#C0473A;"></div><div class="info"><div class="name">Swiss Red</div><div class="role">Accent, one per view</div><div class="val"><span>HEX</span><b>#C0473A</b></div><div class="val"><span>RGB</span><b>192 71 58</b></div><div class="val"><span>CMYK</span><b>0 65 72 22</b></div></div></div>
+      <div class="card sw"><div class="chipc soft" style="background:#DAD2C4;"></div><div class="info"><div class="name">Hairline</div><div class="role">Rules inside cards</div><div class="val"><span>HEX</span><b>#DAD2C4</b></div><div class="val"><span>RGB</span><b>218 210 196</b></div><div class="val"><span>CMYK</span><b>0 4 10 15</b></div></div></div>
+      <div class="card sw"><div class="chipc" style="background:#5B7A52;"></div><div class="info"><div class="name">Sage</div><div class="role">Positive, sparingly</div><div class="val"><span>HEX</span><b>#5B7A52</b></div><div class="val"><span>RGB</span><b>91 122 82</b></div><div class="val"><span>CMYK</span><b>25 0 33 52</b></div></div></div>
+    </div>
+
+    <h3 class="mt6">Usage balance</h3>
+    <p class="note">Paper and ivory carry the page, ink carries the type, red is a thin seasoning.</p>
+    <div class="ratio" role="img" aria-label="Paper 72%, ink 20%, stone 5%, red 3%">
+      <i style="background:#F4EFE4; flex:72;"></i><i style="background:#211F1C; flex:20;"></i><i style="background:#857E72; flex:5;"></i><i style="background:#C0473A; flex:3;"></i>
+    </div>
+    <p class="note" style="margin-top:var(--s3);">* Ink prints as rich black C40 M30 Y30 K100. Flag-red reference for the mark: Pantone&nbsp;485 (≈&nbsp;#D52B1E). Body text and Stone Text on cream clear WCAG AA; Stone is for non-text only.</p>
+
+    <h3 class="mt6">Dark mode</h3>
+    <p>Follows the device. Dark clay is lit the same way: a faint warm highlight up-left, a deep shadow down-right. Use the tokens and it comes for free.</p>
+    <div class="dark">
+      <div class="strip" aria-hidden="true">
+        <i style="background:#1C1A18; color:#A39B8E;">Paper #1C1A18</i>
+        <i style="background:#24221F; color:#A39B8E;">Surface #24221F</i>
+        <i style="background:#161412; color:#A39B8E;">Well #161412</i>
+        <i style="background:#F4EFE4; color:#423D37;">Ink #F4EFE4</i>
+        <i style="background:#DB6B5D; color:#1C1A18;">Red #DB6B5D</i>
       </div>
-      <div class="sw">
-        <div class="chip" style="background:#FBF8F1; border-bottom:1px solid var(--line);"></div>
-        <div class="info"><div class="name">Ivory</div><div class="role">Elevated panels / cards</div>
-          <div class="val"><span>HEX</span><b>#FBF8F1</b></div>
-          <div class="val"><span>RGB</span><b>251 · 248 · 241</b></div>
-          <div class="val"><span>CMYK</span><b>1 · 2 · 5 · 0</b></div>
-        </div>
-      </div>
-      <div class="sw">
-        <div class="chip" style="background:#211F1C;"></div>
-        <div class="info"><div class="name">Ink</div><div class="role">Wordmark / headings</div>
-          <div class="val"><span>HEX</span><b>#211F1C</b></div>
-          <div class="val"><span>RGB</span><b>33 · 31 · 28</b></div>
-          <div class="val"><span>CMYK*</span><b>40 · 30 · 30 · 100</b></div>
-        </div>
-      </div>
-      <div class="sw">
-        <div class="chip" style="background:#423D37;"></div>
-        <div class="info"><div class="name">Graphite</div><div class="role">Body text</div>
-          <div class="val"><span>HEX</span><b>#423D37</b></div>
-          <div class="val"><span>RGB</span><b>66 · 61 · 55</b></div>
-          <div class="val"><span>CMYK</span><b>0 · 0 · 0 · 82</b></div>
-        </div>
-      </div>
-      <div class="sw">
-        <div class="chip" style="background:#857E72;"></div>
-        <div class="info"><div class="name">Stone</div><div class="role">Captions / secondary</div>
-          <div class="val"><span>HEX</span><b>#857E72</b></div>
-          <div class="val"><span>RGB</span><b>133 · 126 · 114</b></div>
-          <div class="val"><span>CMYK</span><b>0 · 5 · 14 · 48</b></div>
-        </div>
-      </div>
-      <div class="sw">
-        <div class="chip" style="background:#C0473A;"></div>
-        <div class="info"><div class="name">Swiss Red</div><div class="role">Accent — use sparingly</div>
-          <div class="val"><span>HEX</span><b>#C0473A</b></div>
-          <div class="val"><span>RGB</span><b>192 · 71 · 58</b></div>
-          <div class="val"><span>CMYK</span><b>0 · 65 · 72 · 22</b></div>
-        </div>
-      </div>
-      <div class="sw">
-        <div class="chip" style="background:#DAD2C4;"></div>
-        <div class="info"><div class="name">Hairline</div><div class="role">Rules / borders</div>
-          <div class="val"><span>HEX</span><b>#DAD2C4</b></div>
-          <div class="val"><span>RGB</span><b>218 · 210 · 196</b></div>
-          <div class="val"><span>CMYK</span><b>0 · 4 · 10 · 15</b></div>
+      <div class="grid" style="margin-top:var(--s4);">
+        <div class="card"><h3>Detection &amp; response</h3><p style="margin:0; font-size:14px;">Same hierarchy and the same light, on an ink ground.</p></div>
+        <div class="center" style="gap:var(--s3);">
+          <div class="seg" aria-hidden="true"><a aria-current="true">Work</a><a>About</a><a>Contact</a></div>
+          <a class="btn btn-primary" href="#colour">Get in touch</a>
         </div>
       </div>
     </div>
 
-    <h3 style="margin-top:var(--s6);">Usage balance</h3>
-    <p style="color:var(--muted); font-size:13.5px;">Roughly: paper dominates, ink for type, red as a thin seasoning.</p>
-    <div class="ratio">
-      <i style="background:#F4EFE4; flex:72;"></i>
-      <i style="background:#211F1C; flex:20;"></i>
-      <i style="background:#857E72; flex:5;"></i>
-      <i style="background:#C0473A; flex:3;"></i>
+    <h3 class="mt6">Charts</h3>
+    <p>Series in this order. Ink carries the main series; red marks only the value that matters. Charts sit flat inside a card: the data never gets clay.</p>
+    <div class="strip" role="img" aria-label="Chart series: ink, red, stone, sage, sand">
+      <i style="background:#211F1C; color:#F4EFE4;">1 Ink</i><i style="background:#C0473A; color:#fff;">2 Red</i><i style="background:#857E72; color:#fff;">3 Stone</i><i style="background:#5B7A52; color:#fff;">4 Sage</i><i style="background:#C9BFAE; color:#211F1C;">5 Sand</i>
     </div>
-    <p style="margin-top:var(--s3); font-size:13px; color:var(--muted);">* Ink is screen <b>#211F1C</b>; in print use the rich black <b>C40 M30 Y30 K100</b> for the wordmark. For an official flag-red alternative on the mark, use Pantone&nbsp;485 (≈ #D52B1E). Body text on cream clears WCAG AA; reserve Stone for non-essential captions.</p>
   </section>
 
   <!-- 04 TYPE -->
   <section id="type">
     <div class="section-head">
       <p class="eyebrow"><span class="num">04</span>Typography</p>
-      <h2>Two typefaces, clear roles</h2>
-      <p class="desc">Cormorant Garamond carries every display moment — the wordmark, headlines, the occasional large quiet statement. Montserrat handles everything functional: body copy, labels, buttons, data. Don’t introduce a third family.</p>
+      <h2>One working typeface, one signature</h2>
+      <p class="desc">Schibsted Grotesk does all the work: headlines, body, labels, buttons, data. Cormorant Garamond is the signature: the wordmark and the LR monogram, nothing else. Type is always flat, never embossed.</p>
     </div>
-
-    <div class="logo-row">
-      <div class="panel grow">
-        <p class="eyebrow" style="margin-bottom:6px;">Display</p>
-        <div class="sample-serif" style="font-size:46px; line-height:1; letter-spacing:.01em;">Cormorant Garamond</div>
-        <div class="sample-serif" style="font-size:18px; color:var(--body); margin-top:14px;">Regular 400 · Medium 500 · SemiBold 600 · Italic</div>
-        <div class="caption">Headlines, wordmark (tracked +.24em, uppercase), pull quotes.</div>
+    <div class="grid">
+      <div class="card">
+        <p class="eyebrow">Everything</p>
+        <div class="s-sans" style="font-size:40px;">Schibsted Grotesk</div>
+        <p style="margin:14px 0 0; font-size:15px;">Regular 400 · Medium 500 · SemiBold 600</p>
+        <div class="caption">Headlines 500 at −0.02em, body 400, labels and buttons 500.</div>
       </div>
-      <div class="panel grow">
-        <p class="eyebrow" style="margin-bottom:6px;">Text &amp; UI</p>
-        <div class="sample-sans" style="font-size:34px; line-height:1; font-weight:500;">Montserrat</div>
-        <div class="sample-sans" style="font-size:15px; color:var(--body); margin-top:14px;">Light 300 · Regular 400 · Medium 500 · SemiBold 600</div>
-        <div class="caption">Body (400), labels &amp; buttons (500, uppercase, tracked +.14em).</div>
+      <div class="card">
+        <p class="eyebrow">Signature only</p>
+        <div class="wordmark" style="font-size:24px; line-height:1.6;">LUCA RAMSEYER</div>
+        <p style="margin:14px 0 0; font-size:15px;">Cormorant Garamond Medium 500</p>
+        <div class="caption">Wordmark (caps, +0.24em) and LR monogram. Never headings or body.</div>
       </div>
     </div>
 
-    <h3 style="margin-top:var(--s6);">Type scale</h3>
-    <div style="margin-top:var(--s2);">
-      <div class="scale-row"><span class="spec">Display · Cormorant 500</span><span class="sample-serif" style="font-size:48px;">Architecture you can trust</span></div>
-      <div class="scale-row"><span class="spec">H1 · Cormorant 500 · 40</span><span class="sample-serif" style="font-size:40px;">Secure by design</span></div>
-      <div class="scale-row"><span class="spec">H2 · Cormorant 500 · 30</span><span class="sample-serif" style="font-size:30px;">Detection &amp; response</span></div>
-      <div class="scale-row"><span class="spec">H3 · Cormorant 600 · 21</span><span class="sample-serif" style="font-size:21px; font-weight:600;">Microsoft Sentinel &amp; Defender</span></div>
-      <div class="scale-row"><span class="spec">Eyebrow · Montserrat 500 · 12</span><span class="sample-sans" style="font-size:12px; letter-spacing:.22em; text-transform:uppercase; color:var(--muted);">Cyber Defence</span></div>
-      <div class="scale-row"><span class="spec">Body · Montserrat 400 · 16</span><span class="sample-sans" style="font-size:16px; max-width:48ch;">Clear, calm copy set at a comfortable 1.75 line-height. Avoid long all-caps passages.</span></div>
-      <div class="scale-row"><span class="spec">Small · Montserrat 400 · 13</span><span class="sample-sans" style="font-size:13px; color:var(--muted);">Captions, metadata and fine print.</span></div>
+    <h3 class="mt6">Type scale</h3>
+    <div class="card" style="padding-top:var(--s2); padding-bottom:var(--s2);">
+      <div class="scale-row"><span class="spec">Display · 500 · 56</span><span class="s-sans" style="font-size:clamp(34px,6vw,56px); letter-spacing:-.03em;">Architecture you can trust</span></div>
+      <div class="scale-row"><span class="spec">H1 · 500 · 44</span><span class="s-sans" style="font-size:clamp(30px,5vw,44px);">Secure by design</span></div>
+      <div class="scale-row"><span class="spec">H2 · 500 · 28</span><span class="s-sans" style="font-size:28px;">Detection &amp; response</span></div>
+      <div class="scale-row"><span class="spec">H3 · 600 · 19</span><span class="s-sans" style="font-size:19px; font-weight:600; letter-spacing:-.01em;">Microsoft Sentinel &amp; Defender</span></div>
+      <div class="scale-row"><span class="spec">Label · 500 · 12</span><span style="font-size:12px; font-weight:500; letter-spacing:.08em; text-transform:uppercase; color:var(--muted);">Cyber defence</span></div>
+      <div class="scale-row"><span class="spec">Body · 400 · 16</span><span style="max-width:48ch;">Clear, calm copy at a 1.6 line height. Avoid long all-caps passages.</span></div>
+      <div class="scale-row"><span class="spec">Small · 400 · 13</span><span style="font-size:13px; color:var(--muted);">Captions, metadata and fine print.</span></div>
     </div>
 
-    <h3 style="margin-top:var(--s6);">Web font setup</h3>
-    <div class="codeblock">&lt;link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&amp;family=Montserrat:wght@300;400;500;600&amp;display=swap" rel="stylesheet"&gt;
+    <h3 class="mt6">Web font setup</h3>
+    <div class="codeblock">&lt;link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500&amp;family=Schibsted+Grotesk:wght@400;500;600&amp;display=swap" rel="stylesheet"&gt;
 
---font-display: "Cormorant Garamond", Georgia, serif;
---font-sans:    "Montserrat", "Helvetica Neue", Arial, sans-serif;</div>
+--sans:  "Schibsted Grotesk", "Helvetica Neue", Arial, sans-serif;  /* everything */
+--serif: "Cormorant Garamond", "Cormorant", Georgia, serif;          /* wordmark only */
+--mono:  ui-monospace, "SF Mono", Menlo, Consolas, monospace;       /* code only */</div>
   </section>
 
-  <!-- 05 COMPONENTS -->
+  <!-- 05 DEPTH -->
+  <section id="depth">
+    <div class="section-head">
+      <p class="eyebrow"><span class="num">05</span>Depth &amp; clay</p>
+      <h2>Three heights and a dent</h2>
+      <p class="desc">Everything is made of the same clay as the page. Light comes from the top left, so every raised surface catches a highlight up-left and casts a warm shadow down-right. Pressed surfaces invert it. Use the elevation tokens; never write a shadow by hand.</p>
+    </div>
+    <div class="levels">
+      <div class="lvl l0"><span><b>Ground</b>the page</span></div>
+      <div class="lvl lp"><span><b>--press</b>inputs, wells, active</span></div>
+      <div class="lvl l1"><span><b>--raise-1</b>controls, chips</span></div>
+      <div class="lvl l2"><span><b>--raise-2</b>cards, panels</span></div>
+      <div class="lvl l3"><span><b>--raise-3</b>one hero object</span></div>
+    </div>
+    <ul class="rules mt5">
+      <li><b>One light.</b> Highlights up-left, shadows down-right, on every element, in both themes.</li>
+      <li><b>Three heights.</b> Controls at raise-1, cards at raise-2, and a single hero object per page at raise-3. Pair raised surfaces with <code>--clay-body</code> for the soft inner rim.</li>
+      <li><b>Press means input.</b> Fields, tracks and wells sit at <code>--press</code> on the Well colour. Buttons drop from raise-1 to press while held.</li>
+      <li><b>Same clay.</b> Raised surfaces are Ivory on Paper. Ink and red fills use <code>--sheen</code> instead of the paper shadows.</li>
+      <li><b>No clay inside clay.</b> Inside a card, separate with hairlines or a well, never another raised card.</li>
+      <li><b>Type, icons and data stay flat.</b> No text shadows, no embossed letters, no clay bars in charts.</li>
+      <li><b>Depth is never the only signal.</b> Labels, text and a 2&nbsp;px focus outline carry meaning. With <code>prefers-contrast: more</code> or forced colours, shadows give way to hairlines.</li>
+      <li><b>Flat where clay can’t travel.</b> Email, print, favicons and the social image files stay flat.</li>
+    </ul>
+    <div class="codeblock mt5">.card  { background: var(--surface); border-radius: var(--radius-card);
+         box-shadow: var(--clay-body), var(--raise-2); }
+.field { background: var(--well); border-radius: var(--radius-ui);
+         box-shadow: var(--press); }
+.btn:active { box-shadow: var(--press); transform: scale(var(--press-scale)); }
+
+/* Tailwind v4 */
+&lt;div class="bg-surface rounded-card shadow-raise-2"&gt;</div>
+    <h3 class="mt6">Radius</h3>
+    <p>Soft but not round: 14&nbsp;px on controls, 24&nbsp;px on cards, 32&nbsp;px on panels, pills only for chips and switches. Nested corners subtract the padding between them. The mark keeps its fixed 10%.</p>
+  </section>
+
+  <!-- 06 COMPONENTS -->
   <section id="components">
     <div class="section-head">
-      <p class="eyebrow"><span class="num">05</span>Web components</p>
+      <p class="eyebrow"><span class="num">06</span>Components</p>
       <h2>Interface elements</h2>
-      <p class="desc">Minimal, near-square corners (3&nbsp;px), hairline borders, uppercase tracked labels. Motion is subtle — a 200&nbsp;ms colour transition, nothing more.</p>
+      <p class="desc">Sentence-case labels, 48&nbsp;px controls, one accent per view. Try them: buttons sink when pressed, the current tab rises out of its groove.</p>
     </div>
-
-    <h3>Buttons</h3>
-    <div class="row" style="margin-bottom:var(--s5);">
-      <a class="btn btn-primary" href="#components">Get in touch</a>
-      <a class="btn btn-ghost" href="#components">View services</a>
-      <a class="btn btn-accent" href="#components">Report an incident</a>
+    <div class="card">
+      <h3>Buttons</h3>
+      <div class="row">
+        <a class="btn btn-primary" href="#components">Get in touch</a>
+        <a class="btn" href="#components">View services</a>
+        <a class="btn btn-accent" href="#components">Report an incident</a>
+      </div>
+      <p class="note" style="margin:var(--s3) 0 0;">Primary is ink with sheen. Secondary is ivory clay. Accent red appears once per view, if at all.</p>
     </div>
-
-    <div class="logo-row">
-      <div class="grow">
+    <div class="grid" style="margin-top:var(--s4);">
+      <div class="card">
         <h3>Form field</h3>
-        <label class="label">Work email</label>
-        <input class="field" type="email" placeholder="you@company.ch">
+        <label class="label" for="demo-email">Work email</label>
+        <input class="field" id="demo-email" type="email" inputmode="email" placeholder="you@company.ch">
+        <label class="switch" style="margin-top:var(--s3);"><input type="checkbox" checked><span class="track"></span>Weekly brief</label>
       </div>
-      <div class="grow">
-        <h3>Link &amp; divider</h3>
-        <p style="font-size:14.5px;">Inline <a href="#components">links use ink with a hairline underline</a>, turning red on hover.</p>
-        <div class="divider-dot" style="margin-top:var(--s3);"><b>·</b></div>
-        <div class="caption">The separator dot is the recurring brand motif.</div>
+      <div class="card">
+        <h3>Navigation</h3>
+        <nav class="seg" aria-label="Demo"><a href="#components" aria-current="page">Work</a><a href="#components">About</a><a href="#components">Contact</a></nav>
+        <p class="note" style="margin:var(--s3) 0 0;">The signature: the current item rises out of a pressed track. Use it for primary navigation and view switches.</p>
       </div>
     </div>
+    <div class="grid" style="margin-top:var(--s4);">
+      <div class="card">
+        <h3>Chips &amp; links</h3>
+        <div class="row" style="gap:var(--s1);"><span class="chip">Open source</span><span class="chip">No telemetry</span><span class="chip">macOS</span></div>
+        <p style="margin:var(--s3) 0 0; font-size:15px;">Inline <a href="#components">links stay flat</a>: ink with a hairline, red on hover.</p>
+      </div>
+      <div class="well">
+        <h3>Well</h3>
+        <p style="font-size:15px; margin:0;">A pressed area for secondary content: code, quotes, metadata.</p>
+        <div class="divider-dot" style="margin-top:var(--s3);" aria-hidden="true"><b>·</b></div>
+      </div>
+    </div>
+
+    <h3 class="mt6">Interaction &amp; motion</h3>
+    <ul class="rules">
+      <li><b>Press:</b> on <code>:active</code> the shadow swaps from raise-1 to press and the control scales to 0.98, over 140&nbsp;ms.</li>
+      <li><b>Hover</b> changes colour only, inside <code>@media (hover: hover)</code>. Nothing lifts, floats or grows.</li>
+      <li>Transitions name their properties: <code>box-shadow</code>, <code>transform</code>, <code>color</code>. Never <code>transition: all</code>.</li>
+      <li><b>Entrances</b> under 500&nbsp;ms with <code>cubic-bezier(0.23, 1, 0.32, 1)</code>, transform and opacity only, once per page.</li>
+      <li>Respect <code>prefers-reduced-motion</code>: drop movement, keep the shadow swap.</li>
+      <li><b>Focus:</b> a visible 2&nbsp;px ink outline on <code>:focus-visible</code>, outside the clay.</li>
+    </ul>
+    <p class="note mt5">A ready-made implementation, light and dark, lives at <a href="https://pages.lram.ch/brand.css">pages.lram.ch/brand.css</a>.</p>
   </section>
 
-  <!-- 06 LAYOUT -->
+  <!-- 07 LAYOUT -->
   <section id="layout">
     <div class="section-head">
-      <p class="eyebrow"><span class="num">06</span>Layout &amp; spacing</p>
-      <h2>Room to breathe</h2>
-      <p class="desc">Whitespace is the most important element. Center hero content; left-align reading content within a ~920&nbsp;px column. Use an 8-point spacing scale so rhythm stays consistent.</p>
+      <p class="eyebrow"><span class="num">07</span>Layout, spacing &amp; mobile</p>
+      <h2>Room to breathe, and room for shadows</h2>
+      <p class="desc">Whitespace is still the main element. Clay needs a little more of it: leave at least 24&nbsp;px between raised surfaces so their shadows never touch. Centre hero content; left-align reading content in a ~920&nbsp;px column.</p>
     </div>
-    <div class="row" style="gap:var(--s2); align-items:flex-end;">
-      <div style="text-align:center;"><div style="width:8px;height:8px;background:var(--ink);"></div><div class="caption">8</div></div>
-      <div style="text-align:center;"><div style="width:16px;height:16px;background:var(--ink);"></div><div class="caption">16</div></div>
-      <div style="text-align:center;"><div style="width:24px;height:24px;background:var(--ink);"></div><div class="caption">24</div></div>
-      <div style="text-align:center;"><div style="width:32px;height:32px;background:var(--ink);"></div><div class="caption">32</div></div>
-      <div style="text-align:center;"><div style="width:48px;height:48px;background:var(--ink);"></div><div class="caption">48</div></div>
-      <div style="text-align:center;"><div style="width:64px;height:64px;background:var(--ink);"></div><div class="caption">64</div></div>
+    <div class="space" aria-hidden="true">
+      <div class="center"><i style="width:8px;height:8px;"></i><div class="caption">8</div></div>
+      <div class="center"><i style="width:16px;height:16px;"></i><div class="caption">16</div></div>
+      <div class="center"><i style="width:24px;height:24px;"></i><div class="caption">24</div></div>
+      <div class="center"><i style="width:32px;height:32px;"></i><div class="caption">32</div></div>
+      <div class="center"><i style="width:48px;height:48px;"></i><div class="caption">48</div></div>
+      <div class="center"><i style="width:64px;height:64px;"></i><div class="caption">64</div></div>
+    </div>
+
+    <h3 class="mt6">Mobile first</h3>
+    <div class="split">
+      <div class="phone" aria-hidden="true">
+        <div class="scr">
+          <div class="wordmark">LUCA RAMSEYER</div>
+          <div class="h">Secure by design</div>
+          <div class="p">One column, 16&nbsp;px edges, generous air.</div>
+          <div class="mini"><b style="color:var(--ink);">Raml KQL</b><br>One query, many tenants.</div>
+          <span class="btn btn-primary">Get in touch</span>
+        </div>
+      </div>
+      <ul class="rules" style="margin:0;">
+        <li>Design 360–430&nbsp;px first. One column; add columns with <code>repeat(auto-fit, minmax(240px, 1fr))</code>.</li>
+        <li>The page never scrolls sideways. Wide tables and code scroll inside their own well.</li>
+        <li>16&nbsp;px side padding plus <code>env(safe-area-inset-*)</code>. Card padding drops to 24&nbsp;px.</li>
+        <li>Shadows scale down on phones: raise-2 on cards is enough; save raise-3 for the hero mark.</li>
+        <li>Touch targets 48&nbsp;px, 8&nbsp;px apart. Nothing only on hover.</li>
+        <li>Body 16&nbsp;px, nothing under 12&nbsp;px, fields at 16&nbsp;px so iOS does not zoom.</li>
+        <li>Never block zoom. Full-height heroes use <code>100svh</code>. One <code>theme-color</code> per scheme.</li>
+        <li>Test on a real phone: soft shadows look different on an OLED screen.</li>
+      </ul>
     </div>
   </section>
 
-  <!-- 07 EMAIL -->
+  <!-- 08 EMAIL -->
   <section id="email">
     <div class="section-head">
-      <p class="eyebrow"><span class="num">07</span>Email</p>
+      <p class="eyebrow"><span class="num">08</span>Email</p>
       <h2>Signature &amp; templates</h2>
-      <p class="desc">Email stays consistent with the web: white or cream ground, the wordmark, one accent. Keep messages text-first; the mark and a thin rule are enough decoration.</p>
+      <p class="desc">Email stays flat. Most mail clients drop shadows, so clay would arrive broken. White or cream ground, the wordmark, one ink button, a thin footer rule.</p>
     </div>
-
     <h3>Signature</h3>
-    <div class="sig" style="margin-bottom:var(--s5); max-width:520px;">
-      <svg width="56" height="56" viewBox="0 0 100 100" aria-hidden="true">
-        <rect width="100" height="100" rx="10" fill="var(--red)"/>
-        <rect x="39.25" y="19" width="21.5" height="62" fill="#fff"/>
-        <rect x="19" y="39.25" width="62" height="21.5" fill="#fff"/>
-      </svg>
+    <div class="sig">
+      <svg width="56" height="56" viewBox="0 0 100 100" aria-hidden="true"><rect width="100" height="100" rx="10" fill="var(--red)"/><path fill="#fff" d="M39.25 19h21.5v20.25H81v21.5H60.75V81h-21.5V60.75H19v-21.5h20.25z"/></svg>
       <div class="bar"></div>
-      <div class="id">
+      <div>
         <div class="n">Luca Ramseyer</div>
         <div class="t">Systems · Cybersecurity · Software</div>
-        <div class="c">luca@raml.ch · +41 77 448 25 65<br><a href="https://raml.ch">www.raml.ch</a></div>
+        <div class="c">luca@raml.ch · +41 77 448 25 65<br><a href="https://lram.ch">lram.ch</a></div>
       </div>
     </div>
-
-    <h3>Template</h3>
-    <div class="email-mock" style="max-width:560px;">
+    <h3 class="mt5">Template</h3>
+    <div class="email-mock">
       <div class="email-body">
-        <div class="wm">LUCA RAMSEYER</div>
+        <div class="wordmark">LUCA RAMSEYER</div>
         <div class="wm-tag">Systems<span class="sep">·</span>Cybersecurity<span class="sep">·</span>Software</div>
         <div class="email-h">Your monthly security brief</div>
-        <p class="email-p">A short, plain-language summary of what changed, what it means, and what (if anything) you need to do.</p>
-        <a class="btn btn-primary" href="#email">Read the brief</a>
+        <p class="email-p">A short, plain-language summary of what changed, what it means, and what, if anything, you need to do.</p>
+        <a class="email-btn" href="#email">Read the brief</a>
       </div>
-      <div class="email-foot">Luca Ramseyer · Bern, Switzerland<br>luca@raml.ch · www.raml.ch</div>
+      <div class="email-foot">Luca Ramseyer · Bern, Switzerland<br>luca@raml.ch · lram.ch</div>
     </div>
   </section>
 
-  <!-- 08 SOCIAL -->
+  <!-- 09 SOCIAL -->
   <section id="social">
     <div class="section-head">
-      <p class="eyebrow"><span class="num">08</span>Social media</p>
+      <p class="eyebrow"><span class="num">09</span>Social media</p>
       <h2>Profiles &amp; posts</h2>
-      <p class="desc">Two avatar options: the Swiss-cross mark, or an “LR” monogram in Cormorant. Banners and posts keep the cream ground and lots of air. Ready-made image files are included alongside this guide.</p>
+      <p class="desc">The clay mark makes a strong avatar: it reads as an object even at thumbnail size. Banners and posts keep the cream ground, lots of air, and the mark as the only rich thing. The image files in <code>assets/</code> are still the flat v2 set.</p>
     </div>
-
-    <div class="social-grid" style="margin-bottom:var(--s5);">
-      <div>
-        <div class="avatar sq">
-          <svg width="128" height="128" viewBox="0 0 100 100" aria-label="Avatar mark">
-            <rect width="100" height="100" fill="var(--paper)"/>
-            <rect x="28" y="28" width="44" height="44" rx="5" fill="var(--red)"/>
-            <rect x="44.5" y="36" width="11" height="28" fill="var(--paper)"/>
-            <rect x="36" y="44.5" width="28" height="11" fill="var(--paper)"/>
-          </svg>
-        </div>
-        <div class="caption">Avatar — mark</div>
-      </div>
-      <div>
-        <div class="av-mono">LR</div>
-        <div class="caption">Avatar — monogram</div>
-      </div>
+    <div class="row" style="gap:var(--s5); margin-bottom:var(--s5);">
+      <div class="center"><div class="avatar"><div class="clay-mark"><svg viewBox="0 0 100 100" aria-hidden="true"><use href="#cross"/></svg></div></div><div class="caption">Avatar, clay mark</div></div>
+      <div class="center"><div class="avatar"><span class="av-mono">LR</span></div><div class="caption">Avatar, monogram</div></div>
     </div>
-
-    <div class="banner" style="margin-bottom:var(--s4);">
-      <div class="wm">LUCA RAMSEYER</div>
-      <div class="wm-tag">Systems<span class="sep">·</span>Cybersecurity<span class="sep">·</span>Software</div>
+    <div class="banner" role="img" aria-label="Banner: clay mark and wordmark on cream">
+      <div class="clay-mark"><svg viewBox="0 0 100 100" aria-hidden="true"><use href="#cross"/></svg></div>
+      <div class="wordmark">LUCA RAMSEYER</div>
     </div>
-    <div class="caption" style="margin-bottom:var(--s5);">Cover / banner — 1500×500 (X) and 1584×396 (LinkedIn) supplied.</div>
-
+    <div class="caption" style="margin-bottom:var(--s5);">Cover: 1500×500 (X) and 1584×396 (LinkedIn)</div>
     <h3>Post template</h3>
-    <div class="post" style="max-width:360px;">
-      <div class="mk">
-        <svg width="28" height="28" viewBox="0 0 100 100" aria-hidden="true">
-          <rect width="100" height="100" rx="10" fill="var(--red)"/>
-          <rect x="39.25" y="19" width="21.5" height="62" fill="var(--paper)"/>
-          <rect x="19" y="39.25" width="62" height="21.5" fill="var(--paper)"/>
-        </svg>
-      </div>
-      <div class="kicker">Field note</div>
-      <div class="ph">Three signs an inbox rule is hiding an attacker.</div>
+    <div class="post">
+      <div class="clay-mark"><svg viewBox="0 0 100 100" aria-hidden="true"><use href="#cross"/></svg></div>
+      <div class="k">Field note</div>
+      <div class="ph">Three signs an inbox rule is hiding an attacker</div>
     </div>
   </section>
 
-  <!-- 09 WALLPAPERS -->
+  <!-- 10 WALLPAPERS -->
   <section id="wallpapers">
     <div class="section-head">
-      <p class="eyebrow"><span class="num">09</span>Wallpapers</p>
+      <p class="eyebrow"><span class="num">10</span>Wallpapers</p>
       <h2>Desktop &amp; mobile</h2>
-      <p class="desc">Monochrome dark wallpapers with the Swiss cross and <code>raml.ch</code> lockup. Ink ground, cream mark, one hairline of accent. Files live in <code>assets/wallpapers/</code>.</p>
+      <p class="desc">Monochrome dark wallpapers with the Swiss cross and the raml.ch lockup, from before the move to lram.ch and before clay. Files live in <code>assets/wallpapers/</code>.</p>
     </div>
-
-    <div class="social-grid">
-      <div>
-        <img src="assets/wallpapers/raml-swiss-mac-mono-dark.png" alt="Desktop wallpaper — Swiss cross on ink, dark" style="width:100%;border-radius:8px;display:block;">
-        <div class="caption">Desktop — <code>raml-swiss-mac-mono-dark.png</code></div>
-      </div>
-      <div>
-        <img src="assets/wallpapers/raml-swiss-iphone-mono-dark.png" alt="Mobile wallpaper — Swiss cross on ink, dark" style="width:100%;max-width:200px;border-radius:8px;display:block;margin:0 auto;">
-        <div class="caption">Mobile — <code>raml-swiss-iphone-mono-dark.png</code></div>
-      </div>
+    <div class="grid wall">
+      <div><img src="assets/wallpapers/raml-swiss-mac-mono-dark.png" alt="Desktop wallpaper: Swiss cross on ink"><div class="caption">Desktop, <code>raml-swiss-mac-mono-dark.png</code></div></div>
+      <div><img src="assets/wallpapers/raml-swiss-iphone-mono-dark.png" alt="Mobile wallpaper: Swiss cross on ink" style="max-width:200px; margin:0 auto;"><div class="caption" style="text-align:center;">Mobile, <code>raml-swiss-iphone-mono-dark.png</code></div></div>
     </div>
   </section>
 
-  <!-- 10 VOICE -->
+  <!-- 11 VOICE -->
   <section id="voice">
     <div class="section-head">
-      <p class="eyebrow"><span class="num">10</span>Voice &amp; tone</p>
+      <p class="eyebrow"><span class="num">11</span>Voice &amp; tone</p>
       <h2>How it should sound</h2>
-      <p class="desc">Calm, precise, expert. Explain security in plain language; never trade on fear or hype. Confidence comes from clarity, not volume.</p>
+      <p class="desc">Calm, precise, expert. The surfaces got softer; the words stay exact. Explain security in plain language, never with fear or hype.</p>
     </div>
     <div class="voice">
-      <div class="col yes">
-        <div class="h">Do</div>
-        <ul>
-          <li>Lead with what changed and what it means.</li>
-          <li>Use plain verbs: “block”, “review”, “restore”.</li>
-          <li>Be specific — name the system, the risk, the fix.</li>
-          <li>Keep it short. White space in writing, too.</li>
-        </ul>
-      </div>
-      <div class="col no">
-        <div class="h">Don’t</div>
-        <ul>
-          <li>Sell with fear or breathless urgency.</li>
-          <li>Hide behind jargon or acronyms.</li>
-          <li>Over-promise (“100% secure”).</li>
-          <li>Shout in all caps or stack exclamation marks.</li>
-        </ul>
-      </div>
+      <div class="card yes"><h3><b>Do</b></h3><ul><li>Lead with what changed and what it means.</li><li>Use plain verbs: block, review, restore.</li><li>Be specific: name the system, the risk, the fix.</li><li>Keep it short. White space in writing, too.</li></ul></div>
+      <div class="card no"><h3><b>Don’t</b></h3><ul><li>Sell with fear or breathless urgency.</li><li>Hide behind jargon or acronyms.</li><li>Over-promise (“100% secure”).</li><li>Shout in all caps or stack exclamation marks.</li></ul></div>
     </div>
   </section>
 
-  <!-- 11 LICENSING -->
-  <section id="license" style="border-bottom:0;">
+  <!-- 12 LICENSING -->
+  <section id="license">
     <div class="section-head">
-      <p class="eyebrow"><span class="num">11</span>Licensing &amp; credits</p>
-      <h2>Free to use — with one small rule</h2>
+      <p class="eyebrow"><span class="num">12</span>Licensing &amp; credits</p>
+      <h2>Free to use, with one small rule</h2>
       <p class="desc">Both typefaces are under the <strong>SIL Open Font License 1.1</strong>: free for personal and commercial use, including embedding. The licence files live in <code>fonts/</code>.</p>
     </div>
-
-    <div class="logo-row" style="margin-bottom:var(--s4);">
-      <div class="panel grow">
-        <h3>Cormorant Garamond</h3>
-        <p style="font-size:14px;">© 2015 The Cormorant Project Authors — Christian Thalmann, Catharsis Fonts.</p>
-        <p class="caption">SIL OFL 1.1 · <code>fonts/OFL-CormorantGaramond.txt</code></p>
-      </div>
-      <div class="panel grow">
-        <h3>Montserrat</h3>
-        <p style="font-size:14px;">© 2024 The Montserrat Project Authors — Julieta Ulanovsky et al.</p>
-        <p class="caption">SIL OFL 1.1 · <code>fonts/OFL-Montserrat.txt</code></p>
-      </div>
+    <div class="grid">
+      <div class="card"><h3>Cormorant Garamond</h3><p style="font-size:14px;">© 2015 The Cormorant Project Authors, Christian Thalmann, Catharsis Fonts.</p><p class="note" style="margin:0;">SIL OFL 1.1 · <code>fonts/OFL-CormorantGaramond.txt</code></p></div>
+      <div class="card"><h3>Schibsted Grotesk</h3><p style="font-size:14px;">© 2023 The Schibsted-Grotesk Project Authors.</p><p class="note" style="margin:0;">SIL OFL 1.1 · <code>fonts/OFL-SchibstedGrotesk.txt</code></p></div>
     </div>
-
-    <div class="voice" style="margin-bottom:var(--s3);">
-      <div class="col">
-        <div class="h" style="color:var(--ink);">Ship the OFL file when…</div>
-        <ul>
-          <li>Self-hosting webfonts (<code>.woff2</code>/<code>.ttf</code>) on a site.</li>
-          <li>Bundling the fonts into an app or installer.</li>
-          <li>Keep the matching <code>OFL-*.txt</code> in the same folder as the fonts.</li>
-        </ul>
-      </div>
-      <div class="col">
-        <div class="h" style="color:var(--ink);">No licence file needed when…</div>
-        <ul>
-          <li>Loading the fonts from the Google Fonts CDN (the default here).</li>
-          <li>Exporting documents — PDF, PNG, SVG, the printed card.</li>
-          <li>The OFL does not bind documents created with the fonts.</li>
-        </ul>
-      </div>
+    <div class="voice" style="margin-top:var(--s4);">
+      <div class="well"><h3>Ship the OFL file when…</h3><ul><li>Self-hosting webfonts (<code>.woff2</code>, <code>.ttf</code>) on a site.</li><li>Bundling the fonts into an app or installer.</li><li>Keep the matching <code>OFL-*.txt</code> beside the fonts.</li></ul></div>
+      <div class="well"><h3>No licence file needed when…</h3><ul><li>Loading the fonts from the Google Fonts CDN, the default here.</li><li>Exporting documents: PDF, PNG, SVG, the printed card.</li><li>The OFL does not bind documents made with the fonts.</li></ul></div>
     </div>
-
-    <p style="font-size:13.5px; color:var(--muted);">No attribution is required for normal use. Never rename a modified font to “Cormorant” or “Montserrat”. Colours, layout, the wordmark, the cross mark, and the code are original to this brand and free to use and modify; “Pantone 485” is named only as a colour reference, independent of Pantone’s proprietary system.</p>
+    <p class="note" style="margin-top:var(--s4);">No attribution is required for normal use. Never rename a modified font to “Cormorant” or “Schibsted Grotesk”. Colours, layout, the wordmark, the cross mark and the code are original to this brand and free to use and modify. “Pantone 485” is named only as a colour reference.</p>
   </section>
 
 </main>
 
 <footer>
-  <div class="wm">LUCA RAMSEYER</div>
-  <div class="ft-tag">Systems<span style="color:var(--red); padding:0 .5em;">·</span>Cybersecurity<span style="color:var(--red); padding:0 .5em;">·</span>Software</div>
-  <div class="ft-meta">Brand Guidelines v1.0 · <a href="mailto:luca@raml.ch">luca@raml.ch</a> · <a href="https://raml.ch">www.raml.ch</a></div>
+  <div class="wordmark">LUCA RAMSEYER</div>
+  <div class="meta">Brand guidelines v3.0<span class="sep">·</span><a href="mailto:luca@raml.ch">luca@raml.ch</a><span class="sep">·</span><a href="https://lram.ch">lram.ch</a></div>
 </footer>
 
 </body>
